@@ -319,17 +319,16 @@ button:hover{border-color:var(--frame)}button:focus-visible,input:focus-visible{
  .viewer .cap{overflow-wrap:break-word}
 }
 
-/* phones: hints on how to use what just appeared. A dark chip that fades in, waits and fades out; its arrows sway to say "swipe" */
-.hint{position:absolute;left:50%;z-index:9;display:flex;align-items:center;gap:8px;max-width:calc(100% - 32px);width:max-content;padding:7px 12px;
-  background:rgb(20 22 30/.86);color:#fff;font-size:12px;line-height:1.35;text-align:left;pointer-events:none;box-shadow:0 4px 16px rgb(0 0 0/.25);
-  animation:hint 5s ease .6s both}
-.hint.low{bottom:calc(var(--hint-b,120px) + env(safe-area-inset-bottom))}.map .hint.low{--hint-b:150px}.viewer .hint.low{--hint-b:14px;position:absolute}
-.hint.mid{top:calc(50% + 34px)}
-.hint .sw{flex:none;font-weight:700;letter-spacing:.1em;animation:sway 1.1s ease-in-out infinite}
-.hint .pinch{flex:none;width:16px;height:16px;border:1.5px solid #fff;border-radius:50%;animation:pinch 1.4s ease-in-out infinite}
-@keyframes hint{0%{opacity:0;transform:translate(-50%,6px)}8%,85%{opacity:1;transform:translate(-50%,0)}100%{opacity:0;transform:translate(-50%,0)}}
-@keyframes sway{50%{transform:translateX(5px)}}@keyframes pinch{50%{transform:scale(.55)}}
-@media(prefers-reduced-motion:reduce){.hint{animation:hint 5s linear both!important;animation-duration:5s!important}}
+/* phones: a one-line typed note on how to use what just appeared, in the legend's card style (hairline frame, muted ink, no shadow).
+   It fades in, stays a few seconds and goes, or goes at once on the first touch */
+.hint{position:absolute;left:50%;z-index:9;max-width:calc(100% - 32px);width:max-content;padding:3px 8px;
+  background:var(--card);border:1px solid var(--line);color:var(--mute);font-size:11px;line-height:1.45;text-align:center;pointer-events:none;
+  transform:translateX(-50%);animation:hint 4.5s ease .8s both;transition:opacity .25s}
+.hint.gone{opacity:0!important;animation:none}
+.hint.low{bottom:calc(var(--hint-b,120px) + env(safe-area-inset-bottom))}.map .hint.low{--hint-b:118px}.viewer .hint.low{--hint-b:14px}
+.hint.foot{bottom:12px}
+.stage .hint,.viewer .hint{background:rgb(255 255 255/.92);border-color:transparent;color:#55554f}
+@keyframes hint{0%{opacity:0}10%,85%{opacity:1}100%{opacity:0}}
 /* phones: the introduction steps back while a square is pinned; captions on the showcase card are never cut */
 @media(hover:none){
  .title p{transition:opacity .3s}.map.focus .title p{opacity:0}
