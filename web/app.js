@@ -406,7 +406,7 @@ function MapView({D,layers,cases,onOpen,paused,pick,onPick,mark,fly,children}){
   return html`<div ref=${box} class=${'map'+(drag.current?' drag':'')+(pick?' picking':hover||pin?' over':'')+(focus?' focus':'')} onPointerDown=${down} onPointerMove=${move} onPointerUp=${up}
       onPointerCancel=${cancel} onPointerLeave=${e=>{if(e.pointerType==='mouse')setHover(null)}}>
     <canvas ref=${under} class="under"></canvas><canvas ref=${cv}></canvas><canvas ref=${over} class="over"></canvas>
-    <div class="title">Laboratorio Naturaleza Urbana<p>Un mapa para documentar la naturaleza urbana de Madrid. El archivo crece con aportaciones: fotos antiguas de álbumes familiares, la misma vista fotografiada hoy, una grabación del sonido de un parque, el recuerdo de un río que ya no se ve.</p></div>
+    <div class="title">Laboratorio Naturaleza Urbana<p>Un mapa para documentar la naturaleza urbana de Madrid. Crece con aportaciones: fotos antiguas y la misma vista hoy, audios y textos, cada uno situado en su lugar.</p></div>
     ${v&&Object.values(tiles).filter(g=>!(pin&&g.x0<pin.x0+pin.size&&g.x0+g.size>pin.x0&&g.y0<pin.y0+pin.size&&g.y0+g.size>pin.y0)).map(g=>tileEl(g,!pin&&hover===g.key,false))}
     ${v&&pin&&tileEl(pin,true,true)}
     ${v&&html`<svg class="leads" aria-hidden="true">
@@ -419,6 +419,8 @@ function MapView({D,layers,cases,onOpen,paused,pick,onPick,mark,fly,children}){
     ${plot.map((r,k)=>cardEl({...r,key:'p'+r.key},'',.25+k*.07,itemName(cases[r.id].items[r.item]),r.item))}
     ${pin&&pages>1&&html`<div class="pager" style=${{left:MOBILE?Math.min(base.bw-80,Math.max(80,FR.left+FR.width/2)):FR.left+FR.width/2,top:FR.top+FR.height+12}} onPointerDown=${e=>e.stopPropagation()} onPointerUp=${e=>e.stopPropagation()}>
       <button aria-label="Anteriores" onClick=${()=>setPage(p=>p-1)}>‹</button><span>${pg+1} / ${pages}</span><button aria-label="Siguientes" onClick=${()=>setPage(p=>p+1)}>›</button></div>`}
+    ${v&&!pick&&!pin&&html`<${Hint} id="map" cls="low"><span class="pinch" aria-hidden="true"></span>Pellizca para acercar · toca un cuadro para verlo<//>`}
+    ${v&&pin&&pages>1&&html`<${Hint} id="pin" cls="low"><span class="sw" aria-hidden="true">‹ ›</span>Desliza para ver más · toca el cuadro para abrirlo<//>`}
     <div class="tools" onPointerDown=${e=>e.stopPropagation()}>
       <button aria-label="Acercar" onClick=${()=>{const b=box.current.getBoundingClientRect();zoomAt(b.width/2,b.height/2,1.6)}}>+</button>
       <button aria-label="Alejar" onClick=${()=>{const b=box.current.getBoundingClientRect();zoomAt(b.width/2,b.height/2,1/1.6)}}>−</button>
@@ -486,6 +488,7 @@ function LensMap({D,cases,tile,sel,aside}){
       ${c0&&(()=>{const [X,Y]=S(c0.x,c0.y);return html`${c0.r>0&&html`<circle class="unc" cx=${X} cy=${Y} r=${c0.r/vw.mpp}/>`}<circle class="cs" cx=${X} cy=${Y} r="4.5"/>`})()}
       ${!MOBILE&&html`<circle class="lring" cx=${lx} cy=${ly} r=${lr}/>`}</svg>
     ${MOBILE?html`<div class="seamv" style=${{left:sx}} aria-hidden="true"><i>‹ ›</i></div>
+        <${Hint} id="seam" cls="mid"><span class="sw" aria-hidden="true">‹ ›</span>Arrastra la barra: 1956 a la izquierda, hoy a la derecha<//>
         <span class="stg" style=${{left:8,opacity:seam>.12?1:0}}>1956–57</span><span class="stg" style=${{right:8,opacity:seam<.88?1:0}}>hoy</span>`
       :html`<span class="ltag" style=${{left:lx,top:ly-lr}}>ortofoto 1956–57</span>`}
     ${c0&&(()=>{const [X,Y]=S(c0.x,c0.y);return html`<span class="cname" style=${{left:X+10,top:Y}}>${c0.title}</span>`})()}
@@ -494,10 +497,22 @@ function LensMap({D,cases,tile,sel,aside}){
 
 // one item on the stage, floating over the map: a photo, its versions (one card each), a text, a sound or a file
 const photoCap=p=>html`<span>${p.v&&html`<b>${p.v}</b> `}${p.label}${p.credit&&html` <i>· ${p.credit}</i>`}${p.link&&html` <a href=${p.link} target="_blank" rel="noopener" title="Original">↗</a>`}</span>`;
+/* phones: a short hint on how to use what just appeared (swipe, pinch, drag). It fades in, stays a few seconds and goes;
+   each hint is shown at most HINT_MAX times on this device, so it never nags */
+const HINT_MAX=3,hintSeen=new Set();
+function Hint({id,children,cls}){const [show]=useState(()=>{if(!MOBILE||hintSeen.has(id))return false;hintSeen.add(id);
+    const k='lnu-hint-'+id,n=+(localStorage.getItem(k)||0);if(n>=HINT_MAX)return false;localStorage.setItem(k,n+1);return true});
+  return show?html`<div class=${'hint '+(cls||'')} role="status">${children}</div>`:null}
 /* phones: a case's versions (a, b, c…) fill the stage in the arrangement that shows them largest: stacked, side by side or a grid */
+// each caption is shown whole, under its photo, across its card: its height (11 px typewriter, 6.6 px a letter, some slack for
+// wrapping at word ends) is taken from the photo's height. Columns narrower than 150 px are never used: captions would turn to towers
+const capText=p=>[p.v,p.label,p.credit&&'· '+p.credit].filter(Boolean).join(' ')+(p.link?' ↗':'');
+const capH=(p,W)=>Math.ceil(capText(p).length*6.6*1.18/Math.max(40,W-4))*15.4+9;
 function fitVersions(photos,w,h){const n=photos.length,as=photos.map(p=>aspects.get(p.src)||1.33);let best=null;
-  for(let cols=1;cols<=n;cols++){const rows=Math.ceil(n/cols),cw=(w-8*(cols-1))/cols-12,ch=(h-8*(rows-1))/rows-12-34;if(cw<40||ch<40)continue;
-    const area=as.reduce((t,a)=>{const W=Math.min(cw,ch*a);return t+W*W/a},0);if(!best||area>best.area)best={area,cw,ch}}
+  for(let cols=1;cols<=n;cols++){const rows=Math.ceil(n/cols),cw=(w-8*(cols-1))/cols-12,cell=(h-8*(rows-1))/rows-12;if((cols>1&&cw<150)||cell<80)continue;
+    const fit=photos.map((p,i)=>{const H=Math.min(cw/as[i],cell-capH(p,cw));return {W:H*as[i],H}});
+    const area=fit.reduce((t,f)=>t+Math.max(0,f.W*f.H),0);if(fit.every(f=>f.H>50)&&(!best||area>best.area))best={area,fit,cw}}
+  if(!best){const cw=w-12;best={cw,fit:photos.map((p,i)=>({W:cw,H:cw/as[i]}))}}   // no room at all: one column, and the stage scrolls
   return best}
 function Viewer({c,it,eq,dir,onClose,onStep}){
   /* touch: a sideways swipe goes to the next (or previous) file; on phones the file covers the stage, and a tap beside it closes it */
@@ -509,17 +524,18 @@ function Viewer({c,it,eq,dir,onClose,onStep}){
   const head=html`<figcaption>${catNo(c)} · ${c.title}<button class="x" aria-label="Cerrar" onClick=${onClose}>×</button></figcaption>`;
   let body;
   if(it.type==='versions'){const n=it.photos.length;   // each version in its own card, sized to the free space: 2 across, as many rows as needed
-    const fv=MOBILE&&room&&fitVersions(it.photos,room.w-20,room.h-20-44),ist=fv?{maxWidth:fv.cw+'px',maxHeight:fv.ch+'px'}:undefined;
+    const fv=MOBILE&&room&&fitVersions(it.photos,room.w-20,room.h-20-44),ist=i=>fv?{maxWidth:fv.fit[i].W+'px',maxHeight:fv.fit[i].H+'px'}:undefined;
     return html`<div ref=${vr} class="viewer multi" ...${swipe} style=${{'--cols':Math.min(2,n),'--rows':Math.ceil(n/2),'--dir':dir||0}}>
+      <${Hint} id="viewer" cls="low"><span class="sw" aria-hidden="true">‹ ›</span>Desliza para el siguiente · toca fuera para cerrar<//>
       <div class="vhead">${catNo(c)} · ${c.title}<button class="x" aria-label="Cerrar" onClick=${onClose}>×</button></div>
-      <div class="vgrid" key=${it.photos[0].src}>${it.photos.map(p=>html`<figure class="float ver" key=${p.src}><div class="pic"><${Pic} src=${p.src} eq=${eq} style=${ist} alt=${c.title+', '+p.label}/>${yearTag(p)}</div>
+      <div class="vgrid" key=${it.photos[0].src}>${it.photos.map((p,i)=>html`<figure class="float ver" key=${p.src} style=${fv?{width:fv.cw+12+'px'}:undefined}><div class="pic"><${Pic} src=${p.src} eq=${eq} style=${ist(i)} alt=${c.title+', '+p.label}/>${yearTag(p)}</div>
         <figcaption>${photoCap(p)}</figcaption></figure>`)}</div></div>`}
   else if(it.type==='photo')body=html`${head}<div class="pic"><${Pic} src=${it.src} eq=${eq} alt=${c.title+(it.label?', '+it.label:'')}/>${yearTag(it)}</div><div class="cap"><p>${photoCap(it)}</p></div>`;
   else if(it.type==='text')body=html`${head}<blockquote class="text"><small>${it.label||'Texto'}</small>${it.body}</blockquote>`;
   else if(it.type==='audio')body=html`${head}<div class="aud"><${Sound} src=${it.src} label=${it.label} variant="big"/><p>${it.label}</p></div>`;
   else body=html`${head}<div class="doc">${['txt','pdf','html','md'].includes(ext(it.src))&&html`<iframe src=${it.src} title=${it.label||'Documento'}></iframe>`}
     <a href=${it.src} target="_blank" rel="noopener">Abrir ${it.label||it.src.split('/').pop()} ↗</a></div>`;
-  return html`<div ref=${vr} class="viewer" ...${swipe} style=${{'--dir':dir||0}}><figure class="float" key=${firstSrc(it)||it.src||it.body}>${body}</figure></div>`}
+  return html`<div ref=${vr} class="viewer" ...${swipe} style=${{'--dir':dir||0}}><${Hint} id="viewer" cls="low"><span class="sw" aria-hidden="true">‹ ›</span>Desliza para el siguiente · toca fuera para cerrar<//><figure class="float" key=${firstSrc(it)||it.src||it.body}>${body}</figure></div>`}
 
 function Explore({D,cases,open,eq,onClose}){
   const [info,setInfo]=useState(false),{tile}=open,[sel,setSel]=useState({id:open.id,item:open.item}),[dir,setDir]=useState(0),[shown,setShown]=useState(false),[closing,setClosing]=useState(false),root=useRef();

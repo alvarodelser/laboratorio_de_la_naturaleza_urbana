@@ -242,14 +242,27 @@
    "title": "Plaza de Castelar",
    "items": [
     {
-     "type": "photo",
-     "label": "Desfile de la victoria en la Plaza de Castelar",
-     "src": "media/fotos/18-a.jpg",
-     "year": "1957-64",
-     "credit": "Aquel Madrid que se nos fue"
+     "type": "versions",
+     "photos": [
+      {
+       "label": "Desfile de la victoria en la Plaza de Castelar",
+       "src": "media/fotos/18-a.jpg",
+       "year": "1957-64",
+       "credit": "Aquel Madrid que se nos fue",
+       "v": "a"
+      },
+      {
+       "label": "Plaza de Cibeles (Fuente de Cibeles), hoy",
+       "src": "media/fotos/18-b.jpg",
+       "year": "2017",
+       "credit": "Diego Delso, CC BY-SA 4.0, via Wikimedia Commons",
+       "link": "https://commons.wikimedia.org/wiki/File:Fuente_de_Cibeles%2C_Plaza_de_Cibeles%2C_Madrid%2C_Espa%C3%B1a%2C_2017-05-18%2C_DD_10.jpg",
+       "v": "b"
+      }
+     ]
     }
    ],
-   "date": "1957-64",
+   "date": "1957-64 / 2017",
    "lat": 40.4194,
    "lon": -3.693,
    "loc": "estimate",
@@ -334,11 +347,25 @@
    "title": "Puente de Segovia",
    "items": [
     {
-     "type": "photo",
-     "label": "Canalización del Manzanares a su Paso por el Puente de Segovia",
-     "src": "media/fotos/23-a.jpg"
+     "type": "versions",
+     "photos": [
+      {
+       "label": "Canalización del Manzanares a su Paso por el Puente de Segovia",
+       "src": "media/fotos/23-a.jpg",
+       "v": "a"
+      },
+      {
+       "label": "Puente de Segovia, hoy",
+       "src": "media/fotos/23-b.jpg",
+       "year": "2022",
+       "credit": "Lprolando, CC BY-SA 4.0, via Wikimedia Commons",
+       "link": "https://commons.wikimedia.org/wiki/File:Puente_de_Segovia_en_el_mes_de_julio.jpg",
+       "v": "b"
+      }
+     ]
     }
    ],
+   "date": "2022",
    "lat": 40.4145,
    "lon": -3.7175,
    "loc": "estimate",
@@ -350,11 +377,25 @@
    "title": "Plaza EspañA",
    "items": [
     {
-     "type": "photo",
-     "label": "Jugando a Indios y cowboys en la plaza de españa",
-     "src": "media/fotos/24-a.jpg"
+     "type": "versions",
+     "photos": [
+      {
+       "label": "Jugando a Indios y cowboys en la plaza de españa",
+       "src": "media/fotos/24-a.jpg",
+       "v": "a"
+      },
+      {
+       "label": "Plaza de España (Torre de Madrid), hoy",
+       "src": "media/fotos/24-b.jpg",
+       "year": "2023",
+       "credit": "Diego Delso, CC BY-SA 4.0, via Wikimedia Commons",
+       "link": "https://commons.wikimedia.org/wiki/File:Plaza_de_Espa%C3%B1a%2C_Madrid%2C_Espa%C3%B1a%2C_2023-01-03%2C_DD_15-17_HDR.jpg",
+       "v": "b"
+      }
+     ]
     }
    ],
+   "date": "2023",
    "lat": 40.4234,
    "lon": -3.7122,
    "loc": "estimate",
@@ -366,11 +407,25 @@
    "title": "Plaza españa",
    "items": [
     {
-     "type": "photo",
-     "label": "Construcción de la torre de madrid y juego de frontón en las tapias del cuartel de la montaña",
-     "src": "media/fotos/25-a.jpg"
+     "type": "versions",
+     "photos": [
+      {
+       "label": "Construcción de la torre de madrid y juego de frontón en las tapias del cuartel de la montaña",
+       "src": "media/fotos/25-a.jpg",
+       "v": "a"
+      },
+      {
+       "label": "Plaza de España (Torre de Madrid), hoy",
+       "src": "media/fotos/25-b.jpg",
+       "year": "2023",
+       "credit": "Diego Delso, CC BY-SA 4.0, via Wikimedia Commons",
+       "link": "https://commons.wikimedia.org/wiki/File:Plaza_de_Espa%C3%B1a%2C_Madrid%2C_Espa%C3%B1a%2C_2023-01-03%2C_DD_15-17_HDR.jpg",
+       "v": "b"
+      }
+     ]
     }
    ],
+   "date": "2023",
    "lat": 40.424,
    "lon": -3.714,
    "loc": "estimate",
@@ -382,11 +437,25 @@
    "title": "El estanque del retiroaguardando los decorados de \"el fabuloso mundo del circo\"",
    "items": [
     {
-     "type": "photo",
-     "label": "El estanque del retiroaguardando los decorados de \"el fabuloso mundo del circo\"",
-     "src": "media/fotos/26-a.jpg"
+     "type": "versions",
+     "photos": [
+      {
+       "label": "El estanque del retiroaguardando los decorados de \"el fabuloso mundo del circo\"",
+       "src": "media/fotos/26-a.jpg",
+       "v": "a"
+      },
+      {
+       "label": "Estanque Grande del Retiro, hoy",
+       "src": "media/fotos/26-b.jpg",
+       "year": "2018",
+       "credit": "Ezarate, CC BY-SA 4.0, via Wikimedia Commons",
+       "link": "https://commons.wikimedia.org/wiki/File:EstanquedelParquedelRetiro-Madrid-0026.jpg",
+       "v": "b"
+      }
+     ]
     }
    ],
+   "date": "2018",
    "lat": 40.4181,
    "lon": -3.6835,
    "loc": "estimate",
@@ -398,11 +467,25 @@
    "title": "La puerta del sol un domingo veraniego",
    "items": [
     {
-     "type": "photo",
-     "label": "La puerta del sol un domingo veraniego",
-     "src": "media/fotos/27-a.jpg"
+     "type": "versions",
+     "photos": [
+      {
+       "label": "La puerta del sol un domingo veraniego",
+       "src": "media/fotos/27-a.jpg",
+       "v": "a"
+      },
+      {
+       "label": "Puerta del Sol, hoy",
+       "src": "media/fotos/27-b.jpg",
+       "year": "2018",
+       "credit": "Sjaak Kempe from Groningen, The Netherlands, CC BY 2.0, via Wikimedia Commons",
+       "link": "https://commons.wikimedia.org/wiki/File:20180418_29_Madrid_-_Puerta_del_Sol_%2840936710504%29.jpg",
+       "v": "b"
+      }
+     ]
     }
    ],
+   "date": "2018",
    "lat": 40.4169,
    "lon": -3.7035,
    "loc": "estimate",
@@ -481,15 +564,28 @@
    "title": "Puente de Segovia",
    "items": [
     {
-     "type": "photo",
-     "label": "Puente de Segovia",
-     "src": "media/fotos/33-a.jpg",
-     "year": "1934",
-     "credit": "Servicio Fotográfico Municipal · Museo de Historia de Madrid, Inv. 8868 · memoriademadrid.es · CC BY-NC 4.0",
-     "link": "https://www.memoriademadrid.es/view/387365/puente-de-segovia?offset=14&limit=50&q=filter,parents,equals,422284"
+     "type": "versions",
+     "photos": [
+      {
+       "label": "Puente de Segovia",
+       "src": "media/fotos/33-a.jpg",
+       "year": "1934",
+       "credit": "Servicio Fotográfico Municipal · Museo de Historia de Madrid, Inv. 8868 · memoriademadrid.es · CC BY-NC 4.0",
+       "link": "https://www.memoriademadrid.es/view/387365/puente-de-segovia?offset=14&limit=50&q=filter,parents,equals,422284",
+       "v": "a"
+      },
+      {
+       "label": "Puente de Segovia, hoy",
+       "src": "media/fotos/33-b.jpg",
+       "year": "2022",
+       "credit": "Lprolando, CC BY-SA 4.0, via Wikimedia Commons",
+       "link": "https://commons.wikimedia.org/wiki/File:Puente_de_Segovia_en_el_mes_de_julio.jpg",
+       "v": "b"
+      }
+     ]
     }
    ],
-   "date": "1934",
+   "date": "1934 / 2022",
    "lat": 40.41417,
    "lon": -3.72289,
    "loc": "estimate",
@@ -501,15 +597,28 @@
    "title": "Plaza de Olavide",
    "items": [
     {
-     "type": "photo",
-     "label": "Plaza de Olavide: Noviembre de 1913. Asfaltado de la Plaza de Olavide",
-     "src": "media/fotos/35-a.jpg",
-     "year": "1913",
-     "credit": "Servicio Fotográfico Municipal · Museo de Historia de Madrid, Inv. 9632 · memoriademadrid.es · CC BY 4.0",
-     "link": "https://www.memoriademadrid.es/view/395937/plaza-de-olavide?offset=28&limit=50&q=filter,parents,equals,422284"
+     "type": "versions",
+     "photos": [
+      {
+       "label": "Plaza de Olavide: Noviembre de 1913. Asfaltado de la Plaza de Olavide",
+       "src": "media/fotos/35-a.jpg",
+       "year": "1913",
+       "credit": "Servicio Fotográfico Municipal · Museo de Historia de Madrid, Inv. 9632 · memoriademadrid.es · CC BY 4.0",
+       "link": "https://www.memoriademadrid.es/view/395937/plaza-de-olavide?offset=28&limit=50&q=filter,parents,equals,422284",
+       "v": "a"
+      },
+      {
+       "label": "Plaza de Olavide, hoy",
+       "src": "media/fotos/35-b.jpg",
+       "year": "2025",
+       "credit": "Jotaemec, CC0, via Wikimedia Commons",
+       "link": "https://commons.wikimedia.org/wiki/File:Vista_de_la_Plaza_de_Olavide_de_Madrid.jpg",
+       "v": "b"
+      }
+     ]
     }
    ],
-   "date": "1913",
+   "date": "1913 / 2025",
    "lat": 40.43277,
    "lon": -3.70105,
    "loc": "estimate",
@@ -601,15 +710,28 @@
    "title": "Obras en la Glorieta de San Vicente",
    "items": [
     {
-     "type": "photo",
-     "label": "Obras en la Glorieta de San Vicente",
-     "src": "media/fotos/40-a.jpg",
-     "year": "ca. 1933",
-     "credit": "Servicio Fotográfico Municipal · Museo de Historia de Madrid, Inv. 8398 · memoriademadrid.es · CC BY-NC 4.0",
-     "link": "https://www.memoriademadrid.es/view/387599/obras-en-la-glorieta-de-san-vicente?offset=88&limit=50&q=filter,parents,equals,422284"
+     "type": "versions",
+     "photos": [
+      {
+       "label": "Obras en la Glorieta de San Vicente",
+       "src": "media/fotos/40-a.jpg",
+       "year": "ca. 1933",
+       "credit": "Servicio Fotográfico Municipal · Museo de Historia de Madrid, Inv. 8398 · memoriademadrid.es · CC BY-NC 4.0",
+       "link": "https://www.memoriademadrid.es/view/387599/obras-en-la-glorieta-de-san-vicente?offset=88&limit=50&q=filter,parents,equals,422284",
+       "v": "a"
+      },
+      {
+       "label": "Puerta de San Vicente / Glorieta de San Vicente, hoy",
+       "src": "media/fotos/40-b.jpg",
+       "year": "2025",
+       "credit": "Américo Toledano, CC BY-SA 4.0, via Wikimedia Commons",
+       "link": "https://commons.wikimedia.org/wiki/File:Puerta_de_San_Vicente_-_Madrid_005.jpg",
+       "v": "b"
+      }
+     ]
     }
    ],
-   "date": "ca. 1933",
+   "date": "ca. 1933 / 2025",
    "lat": 40.4202,
    "lon": -3.7204,
    "loc": "estimate",
@@ -621,15 +743,28 @@
    "title": "Puente de los Franceses",
    "items": [
     {
-     "type": "photo",
-     "label": "Puente de los Franceses",
-     "src": "media/fotos/41-a.jpg",
-     "year": "ca. 1930",
-     "credit": "Servicio Fotográfico Municipal · Museo de Historia de Madrid, Inv. 8387 · memoriademadrid.es · CC BY 4.0",
-     "link": "https://www.memoriademadrid.es/view/395681/puente-de-los-franceses?offset=127&limit=50&q=filter,parents,equals,422284"
+     "type": "versions",
+     "photos": [
+      {
+       "label": "Puente de los Franceses",
+       "src": "media/fotos/41-a.jpg",
+       "year": "ca. 1930",
+       "credit": "Servicio Fotográfico Municipal · Museo de Historia de Madrid, Inv. 8387 · memoriademadrid.es · CC BY 4.0",
+       "link": "https://www.memoriademadrid.es/view/395681/puente-de-los-franceses?offset=127&limit=50&q=filter,parents,equals,422284",
+       "v": "a"
+      },
+      {
+       "label": "Puente de los Franceses, hoy",
+       "src": "media/fotos/41-b.jpg",
+       "year": "2016",
+       "credit": "Benjamín Núñez González, CC BY-SA 4.0, via Wikimedia Commons",
+       "link": "https://commons.wikimedia.org/wiki/File:Puente_de_los_Franceses%2C_Madrid%2C_Espa%C3%B1a%2C_2016_01.jpg",
+       "v": "b"
+      }
+     ]
     }
    ],
-   "date": "ca. 1930",
+   "date": "ca. 1930 / 2016",
    "lat": 40.43367,
    "lon": -3.73594,
    "loc": "estimate",
@@ -661,15 +796,28 @@
    "title": "Matadero Municipal de la Arganzuela: Ferrocarril para el transporte de ganado",
    "items": [
     {
-     "type": "photo",
-     "label": "Matadero Municipal de la Arganzuela: Ferrocarril para el transporte de ganado",
-     "src": "media/fotos/43-a.jpg",
-     "year": "ca. 1920",
-     "credit": "Servicio Fotográfico Municipal · Museo de Historia de Madrid, Inv. 9103 · memoriademadrid.es · CC BY 4.0",
-     "link": "https://www.memoriademadrid.es/view/395735/matadero-municipal-de-la-arganzuela-ferrocarril-para-el-transporte-de-ganado?offset=182&limit=50&q=filter,parents,equals,422284"
+     "type": "versions",
+     "photos": [
+      {
+       "label": "Matadero Municipal de la Arganzuela: Ferrocarril para el transporte de ganado",
+       "src": "media/fotos/43-a.jpg",
+       "year": "ca. 1920",
+       "credit": "Servicio Fotográfico Municipal · Museo de Historia de Madrid, Inv. 9103 · memoriademadrid.es · CC BY 4.0",
+       "link": "https://www.memoriademadrid.es/view/395735/matadero-municipal-de-la-arganzuela-ferrocarril-para-el-transporte-de-ganado?offset=182&limit=50&q=filter,parents,equals,422284",
+       "v": "a"
+      },
+      {
+       "label": "Matadero Madrid, hoy",
+       "src": "media/fotos/43-b.jpg",
+       "year": "2017",
+       "credit": "Fred Romero from Paris, France, CC BY 2.0, via Wikimedia Commons",
+       "link": "https://commons.wikimedia.org/wiki/File:Madrid_-_Matadero_Madrid_%2836044539351%29.jpg",
+       "v": "b"
+      }
+     ]
     }
    ],
-   "date": "ca. 1920",
+   "date": "ca. 1920 / 2017",
    "lat": 40.39188,
    "lon": -3.6985,
    "loc": "estimate",
@@ -721,15 +869,28 @@
    "title": "Puente de Segovia",
    "items": [
     {
-     "type": "photo",
-     "label": "Puente de Segovia",
-     "src": "media/fotos/46-a.jpg",
-     "year": "ca. 1925",
-     "credit": "Servicio Fotográfico Municipal · Hemeroteca Municipal de Madrid, GF-359 · memoriademadrid.es · CC BY 4.0",
-     "link": "https://www.memoriademadrid.es/view/672636/puente-de-segovia-ca-1925?offset=223&limit=50&q=filter,parents,equals,422284"
+     "type": "versions",
+     "photos": [
+      {
+       "label": "Puente de Segovia",
+       "src": "media/fotos/46-a.jpg",
+       "year": "ca. 1925",
+       "credit": "Servicio Fotográfico Municipal · Hemeroteca Municipal de Madrid, GF-359 · memoriademadrid.es · CC BY 4.0",
+       "link": "https://www.memoriademadrid.es/view/672636/puente-de-segovia-ca-1925?offset=223&limit=50&q=filter,parents,equals,422284",
+       "v": "a"
+      },
+      {
+       "label": "Puente de Segovia, hoy",
+       "src": "media/fotos/46-b.jpg",
+       "year": "2022",
+       "credit": "Lprolando, CC BY-SA 4.0, via Wikimedia Commons",
+       "link": "https://commons.wikimedia.org/wiki/File:Puente_de_Segovia_en_el_mes_de_julio.jpg",
+       "v": "b"
+      }
+     ]
     }
    ],
-   "date": "ca. 1925",
+   "date": "ca. 1925 / 2022",
    "lat": 40.41417,
    "lon": -3.72289,
    "loc": "estimate",
@@ -781,15 +942,28 @@
    "title": "Plaza de Santa Ana",
    "items": [
     {
-     "type": "photo",
-     "label": "Plaza de Santa Ana",
-     "src": "media/fotos/49-a.jpg",
-     "year": "ca. 1920",
-     "credit": "Servicio Fotográfico Municipal · Museo de Historia de Madrid, Inv. 9305 · memoriademadrid.es · CC BY 4.0",
-     "link": "https://www.memoriademadrid.es/view/395779/plaza-de-santa-ana?offset=285&limit=50&q=filter,parents,equals,422284"
+     "type": "versions",
+     "photos": [
+      {
+       "label": "Plaza de Santa Ana",
+       "src": "media/fotos/49-a.jpg",
+       "year": "ca. 1920",
+       "credit": "Servicio Fotográfico Municipal · Museo de Historia de Madrid, Inv. 9305 · memoriademadrid.es · CC BY 4.0",
+       "link": "https://www.memoriademadrid.es/view/395779/plaza-de-santa-ana?offset=285&limit=50&q=filter,parents,equals,422284",
+       "v": "a"
+      },
+      {
+       "label": "Plaza de Santa Ana, hoy",
+       "src": "media/fotos/49-b.jpg",
+       "year": "2024",
+       "credit": "Enric, CC BY 4.0, via Wikimedia Commons",
+       "link": "https://commons.wikimedia.org/wiki/File:096_Plaza_de_Santa_Ana_%28Madrid%29%2C_monument_a_Garc%C3%ADa_Lorca_i_hotel_Reina_Victoria.jpg",
+       "v": "b"
+      }
+     ]
     }
    ],
-   "date": "ca. 1920",
+   "date": "ca. 1920 / 2024",
    "lat": 40.41444,
    "lon": -3.7012,
    "loc": "estimate",
@@ -821,15 +995,28 @@
    "title": "Puente del Rey",
    "items": [
     {
-     "type": "photo",
-     "label": "Puente del Rey",
-     "src": "media/fotos/51-a.jpg",
-     "year": "ca. 1930",
-     "credit": "Servicio Fotográfico Municipal · Museo de Historia de Madrid, Inv. 8388 · memoriademadrid.es · CC BY-NC 4.0",
-     "link": "https://www.memoriademadrid.es/view/387591/puente-del-rey?offset=314&limit=50&q=filter,parents,equals,422284"
+     "type": "versions",
+     "photos": [
+      {
+       "label": "Puente del Rey",
+       "src": "media/fotos/51-a.jpg",
+       "year": "ca. 1930",
+       "credit": "Servicio Fotográfico Municipal · Museo de Historia de Madrid, Inv. 8388 · memoriademadrid.es · CC BY-NC 4.0",
+       "link": "https://www.memoriademadrid.es/view/387591/puente-del-rey?offset=314&limit=50&q=filter,parents,equals,422284",
+       "v": "a"
+      },
+      {
+       "label": "Puente del Rey, hoy",
+       "src": "media/fotos/51-b.jpg",
+       "year": "2016",
+       "credit": "Thomas Woodtli from Zürich, Switzerland, CC BY-SA 2.0, via Wikimedia Commons",
+       "link": "https://commons.wikimedia.org/wiki/File:Puente_del_Rey_%2830200727381%29.jpg",
+       "v": "b"
+      }
+     ]
     }
    ],
-   "date": "ca. 1930",
+   "date": "ca. 1930 / 2016",
    "lat": 40.41883,
    "lon": -3.72197,
    "loc": "estimate",
@@ -841,15 +1028,28 @@
    "title": "El hotel Ritz",
    "items": [
     {
-     "type": "photo",
-     "label": "El hotel Ritz",
-     "src": "media/fotos/52-a.jpg",
-     "year": "ca. 1930",
-     "credit": "Servicio Fotográfico Municipal · Museo de Historia de Madrid, Inv. 9323 · memoriademadrid.es · CC BY-NC 4.0",
-     "link": "https://www.memoriademadrid.es/view/496236/el-hotel-ritz?offset=320&limit=50&q=filter,parents,equals,422284"
+     "type": "versions",
+     "photos": [
+      {
+       "label": "El hotel Ritz",
+       "src": "media/fotos/52-a.jpg",
+       "year": "ca. 1930",
+       "credit": "Servicio Fotográfico Municipal · Museo de Historia de Madrid, Inv. 9323 · memoriademadrid.es · CC BY-NC 4.0",
+       "link": "https://www.memoriademadrid.es/view/496236/el-hotel-ritz?offset=320&limit=50&q=filter,parents,equals,422284",
+       "v": "a"
+      },
+      {
+       "label": "Hotel Ritz Madrid, hoy",
+       "src": "media/fotos/52-b.jpg",
+       "year": "2024",
+       "credit": "Zarateman, CC0, via Wikimedia Commons",
+       "link": "https://commons.wikimedia.org/wiki/File:Madrid_-_Hotel_Ritz_05.jpg",
+       "v": "b"
+      }
+     ]
     }
    ],
-   "date": "ca. 1930",
+   "date": "ca. 1930 / 2024",
    "lat": 40.4155,
    "lon": -3.6935,
    "loc": "estimate",
@@ -921,15 +1121,28 @@
    "title": "Plaza de Tirso de Molina",
    "items": [
     {
-     "type": "photo",
-     "label": "Plaza de Tirso de Molina",
-     "src": "media/fotos/56-a.jpg",
-     "year": "ca. 1920",
-     "credit": "Servicio Fotográfico Municipal · Museo de Historia de Madrid, Inv. 9288 · memoriademadrid.es · CC BY 4.0",
-     "link": "https://www.memoriademadrid.es/view/395775/plaza-de-tirso-de-molina?offset=399&limit=50&q=filter,parents,equals,422284"
+     "type": "versions",
+     "photos": [
+      {
+       "label": "Plaza de Tirso de Molina",
+       "src": "media/fotos/56-a.jpg",
+       "year": "ca. 1920",
+       "credit": "Servicio Fotográfico Municipal · Museo de Historia de Madrid, Inv. 9288 · memoriademadrid.es · CC BY 4.0",
+       "link": "https://www.memoriademadrid.es/view/395775/plaza-de-tirso-de-molina?offset=399&limit=50&q=filter,parents,equals,422284",
+       "v": "a"
+      },
+      {
+       "label": "Plaza de Tirso de Molina, hoy",
+       "src": "media/fotos/56-b.jpg",
+       "year": "2018",
+       "credit": "Steven Lek, CC BY-SA 4.0, via Wikimedia Commons",
+       "link": "https://commons.wikimedia.org/wiki/File:Tirso_de_Molina_monument_Madrid.jpg",
+       "v": "b"
+      }
+     ]
     }
    ],
-   "date": "ca. 1920",
+   "date": "ca. 1920 / 2018",
    "lat": 40.41236,
    "lon": -3.70474,
    "loc": "estimate",
@@ -941,15 +1154,28 @@
    "title": "Paseo del Prado",
    "items": [
     {
-     "type": "photo",
-     "label": "Paseo del Prado",
-     "src": "media/fotos/57-a.jpg",
-     "year": "ca. 1930",
-     "credit": "Servicio Fotográfico Municipal · Museo de Historia de Madrid, Inv. 9316 · memoriademadrid.es · CC BY 4.0",
-     "link": "https://www.memoriademadrid.es/view/395783/paseo-del-prado?offset=398&limit=50&q=filter,parents,equals,422284"
+     "type": "versions",
+     "photos": [
+      {
+       "label": "Paseo del Prado",
+       "src": "media/fotos/57-a.jpg",
+       "year": "ca. 1930",
+       "credit": "Servicio Fotográfico Municipal · Museo de Historia de Madrid, Inv. 9316 · memoriademadrid.es · CC BY 4.0",
+       "link": "https://www.memoriademadrid.es/view/395783/paseo-del-prado?offset=398&limit=50&q=filter,parents,equals,422284",
+       "v": "a"
+      },
+      {
+       "label": "Paseo del Prado, hoy",
+       "src": "media/fotos/57-b.jpg",
+       "year": "2016",
+       "credit": "Emilio J. Rodríguez Posada, CC BY-SA 2.0, via Wikimedia Commons",
+       "link": "https://commons.wikimedia.org/wiki/File:Paseo_del_Prado_%2826868955925%29.jpg",
+       "v": "b"
+      }
+     ]
     }
    ],
-   "date": "ca. 1930",
+   "date": "ca. 1930 / 2016",
    "lat": 40.4136,
    "lon": -3.693,
    "loc": "estimate",
@@ -981,15 +1207,28 @@
    "title": "Monumento a Calderón de la Barca en la plaza de Santa Ana",
    "items": [
     {
-     "type": "photo",
-     "label": "Monumento a Calderón de la Barca en la plaza de Santa Ana",
-     "src": "media/fotos/59-a.jpg",
-     "year": "ca. 1930",
-     "credit": "Servicio Fotográfico Municipal · Museo de Historia de Madrid, Inv. 9209 · memoriademadrid.es · CC BY 4.0",
-     "link": "https://www.memoriademadrid.es/view/395747/monumento-a-calderon-de-la-barca-en-la-plaza-de-santa-ana?offset=354&limit=50&q=filter,parents,equals,422284"
+     "type": "versions",
+     "photos": [
+      {
+       "label": "Monumento a Calderón de la Barca en la plaza de Santa Ana",
+       "src": "media/fotos/59-a.jpg",
+       "year": "ca. 1930",
+       "credit": "Servicio Fotográfico Municipal · Museo de Historia de Madrid, Inv. 9209 · memoriademadrid.es · CC BY 4.0",
+       "link": "https://www.memoriademadrid.es/view/395747/monumento-a-calderon-de-la-barca-en-la-plaza-de-santa-ana?offset=354&limit=50&q=filter,parents,equals,422284",
+       "v": "a"
+      },
+      {
+       "label": "Monumento a Calderón de la Barca, Plaza de Santa Ana, hoy",
+       "src": "media/fotos/59-b.jpg",
+       "year": "2024",
+       "credit": "Enric, CC BY 4.0, via Wikimedia Commons",
+       "link": "https://commons.wikimedia.org/wiki/File:093_Monument_a_Calder%C3%B3n_de_la_Barca%2C_de_Joan_Figueras%2C_pl._Santa_Ana_%28Madrid%29.jpg",
+       "v": "b"
+      }
+     ]
     }
    ],
-   "date": "ca. 1930",
+   "date": "ca. 1930 / 2024",
    "lat": 40.41444,
    "lon": -3.7012,
    "loc": "estimate",
@@ -1001,15 +1240,28 @@
    "title": "Fuente de la Fama en el Parque del Oeste",
    "items": [
     {
-     "type": "photo",
-     "label": "Fuente de la Fama en el Parque del Oeste. Se trata de una fuente de estilo churrigueresco, construida por Pedro de Ribera en el segundo tercio del siglo XVIII. Su enclave original se sitúa en la plaza de Antón Martín, razón por la cual fue conocida inicialmente como Fuente de Antón Martín. Después fue trasladada al Parque del Oeste y, en el año 1941, fue trasladada a su actual emplazamiento, junto a una de las fachadas del antiguo Hospicio de San Fernando, donde tiene su sede el Museo de Historia de Madrid.",
-     "src": "media/fotos/60-a.jpg",
-     "year": "ca. 1913",
-     "credit": "Servicio Fotográfico Municipal · Museo de Historia de Madrid, Inv. 9633 · memoriademadrid.es · CC BY 4.0",
-     "link": "https://www.memoriademadrid.es/view/395939/fuente-de-la-fama-en-el-parque-del-oeste?offset=413&limit=50&q=filter,parents,equals,422284"
+     "type": "versions",
+     "photos": [
+      {
+       "label": "Fuente de la Fama en el Parque del Oeste. Se trata de una fuente de estilo churrigueresco, construida por Pedro de Ribera en el segundo tercio del siglo XVIII. Su enclave original se sitúa en la plaza de Antón Martín, razón por la cual fue conocida inicialmente como Fuente de Antón Martín. Después fue trasladada al Parque del Oeste y, en el año 1941, fue trasladada a su actual emplazamiento, junto a una de las fachadas del antiguo Hospicio de San Fernando, donde tiene su sede el Museo de Historia de Madrid.",
+       "src": "media/fotos/60-a.jpg",
+       "year": "ca. 1913",
+       "credit": "Servicio Fotográfico Municipal · Museo de Historia de Madrid, Inv. 9633 · memoriademadrid.es · CC BY 4.0",
+       "link": "https://www.memoriademadrid.es/view/395939/fuente-de-la-fama-en-el-parque-del-oeste?offset=413&limit=50&q=filter,parents,equals,422284",
+       "v": "a"
+      },
+      {
+       "label": "Fuente de la Fama, hoy",
+       "src": "media/fotos/60-b.jpg",
+       "year": "2023",
+       "credit": "CarlosVdeHabsburgo, CC BY-SA 4.0, via Wikimedia Commons",
+       "link": "https://commons.wikimedia.org/wiki/File:Fuente_de_la_Fama_%28Madrid%29.jpg",
+       "v": "b"
+      }
+     ]
     }
    ],
-   "date": "ca. 1913",
+   "date": "ca. 1913 / 2023",
    "lat": 40.42957,
    "lon": -3.72416,
    "loc": "estimate",
@@ -1101,15 +1353,28 @@
    "title": "Glorieta de San Vicente",
    "items": [
     {
-     "type": "photo",
-     "label": "Glorieta de San Vicente",
-     "src": "media/fotos/65-a.jpg",
-     "year": "1934",
-     "credit": "Servicio Fotográfico Municipal · Museo de Historia de Madrid, Inv. 8385 · memoriademadrid.es · CC BY 4.0",
-     "link": "https://www.memoriademadrid.es/view/395669/glorieta-de-san-vicente?offset=401&limit=50&q=filter,parents,equals,422284"
+     "type": "versions",
+     "photos": [
+      {
+       "label": "Glorieta de San Vicente",
+       "src": "media/fotos/65-a.jpg",
+       "year": "1934",
+       "credit": "Servicio Fotográfico Municipal · Museo de Historia de Madrid, Inv. 8385 · memoriademadrid.es · CC BY 4.0",
+       "link": "https://www.memoriademadrid.es/view/395669/glorieta-de-san-vicente?offset=401&limit=50&q=filter,parents,equals,422284",
+       "v": "a"
+      },
+      {
+       "label": "Puerta de San Vicente / Glorieta de San Vicente, hoy",
+       "src": "media/fotos/65-b.jpg",
+       "year": "2025",
+       "credit": "Américo Toledano, CC BY-SA 4.0, via Wikimedia Commons",
+       "link": "https://commons.wikimedia.org/wiki/File:Puerta_de_San_Vicente_-_Madrid_005.jpg",
+       "v": "b"
+      }
+     ]
     }
    ],
-   "date": "1934",
+   "date": "1934 / 2025",
    "lat": 40.4202,
    "lon": -3.7204,
    "loc": "estimate",
@@ -1201,15 +1466,28 @@
    "title": "Puente de Toledo",
    "items": [
     {
-     "type": "photo",
-     "label": "Puente de Toledo",
-     "src": "media/fotos/70-a.jpg",
-     "year": "ca. 1930",
-     "credit": "Servicio Fotográfico Municipal · Museo de Historia de Madrid, Inv. 8927 · memoriademadrid.es · CC BY-NC 4.0",
-     "link": "https://www.memoriademadrid.es/view/387453/puente-de-toledo?offset=465&limit=50&q=filter,parents,equals,422284"
+     "type": "versions",
+     "photos": [
+      {
+       "label": "Puente de Toledo",
+       "src": "media/fotos/70-a.jpg",
+       "year": "ca. 1930",
+       "credit": "Servicio Fotográfico Municipal · Museo de Historia de Madrid, Inv. 8927 · memoriademadrid.es · CC BY-NC 4.0",
+       "link": "https://www.memoriademadrid.es/view/387453/puente-de-toledo?offset=465&limit=50&q=filter,parents,equals,422284",
+       "v": "a"
+      },
+      {
+       "label": "Puente de Toledo, hoy",
+       "src": "media/fotos/70-b.jpg",
+       "year": "2018",
+       "credit": "María Sacristán, CC BY-SA 4.0, via Wikimedia Commons",
+       "link": "https://commons.wikimedia.org/wiki/File:Madrid_Rio_puente_Toledo_2018_mjsm.jpg",
+       "v": "b"
+      }
+     ]
     }
    ],
-   "date": "ca. 1930",
+   "date": "ca. 1930 / 2018",
    "lat": 40.39968,
    "lon": -3.71494,
    "loc": "estimate",
@@ -1221,15 +1499,28 @@
    "title": "Puente de Toledo",
    "items": [
     {
-     "type": "photo",
-     "label": "Puente de Toledo",
-     "src": "media/fotos/71-a.jpg",
-     "year": "ca. 1930",
-     "credit": "Servicio Fotográfico Municipal · Museo de Historia de Madrid, Inv. 8926 · memoriademadrid.es · CC BY-NC 4.0",
-     "link": "https://www.memoriademadrid.es/view/387451/puente-de-toledo?offset=540&limit=50&q=filter,parents,equals,422284"
+     "type": "versions",
+     "photos": [
+      {
+       "label": "Puente de Toledo",
+       "src": "media/fotos/71-a.jpg",
+       "year": "ca. 1930",
+       "credit": "Servicio Fotográfico Municipal · Museo de Historia de Madrid, Inv. 8926 · memoriademadrid.es · CC BY-NC 4.0",
+       "link": "https://www.memoriademadrid.es/view/387451/puente-de-toledo?offset=540&limit=50&q=filter,parents,equals,422284",
+       "v": "a"
+      },
+      {
+       "label": "Puente de Toledo, hoy",
+       "src": "media/fotos/71-b.jpg",
+       "year": "2018",
+       "credit": "María Sacristán, CC BY-SA 4.0, via Wikimedia Commons",
+       "link": "https://commons.wikimedia.org/wiki/File:Madrid_Rio_puente_Toledo_2018_mjsm.jpg",
+       "v": "b"
+      }
+     ]
     }
    ],
-   "date": "ca. 1930",
+   "date": "ca. 1930 / 2018",
    "lat": 40.39968,
    "lon": -3.71494,
    "loc": "estimate",
@@ -1281,15 +1572,28 @@
    "title": "Plaza Mayor",
    "items": [
     {
-     "type": "photo",
-     "label": "Plaza Mayor",
-     "src": "media/fotos/74-a.jpg",
-     "year": "ca. 1930",
-     "credit": "Servicio Fotográfico Municipal · Museo de Historia de Madrid, Inv. 8920 · memoriademadrid.es · CC BY 4.0",
-     "link": "https://www.memoriademadrid.es/view/394321/plaza-mayor?offset=512&limit=50&q=filter,parents,equals,422284"
+     "type": "versions",
+     "photos": [
+      {
+       "label": "Plaza Mayor",
+       "src": "media/fotos/74-a.jpg",
+       "year": "ca. 1930",
+       "credit": "Servicio Fotográfico Municipal · Museo de Historia de Madrid, Inv. 8920 · memoriademadrid.es · CC BY 4.0",
+       "link": "https://www.memoriademadrid.es/view/394321/plaza-mayor?offset=512&limit=50&q=filter,parents,equals,422284",
+       "v": "a"
+      },
+      {
+       "label": "Plaza Mayor, hoy",
+       "src": "media/fotos/74-b.jpg",
+       "year": "2023",
+       "credit": "Alberto-g-rovi, CC0, via Wikimedia Commons",
+       "link": "https://commons.wikimedia.org/wiki/File:Plaza_Mayor-Madrid_%281%29.jpg",
+       "v": "b"
+      }
+     ]
     }
    ],
-   "date": "ca. 1930",
+   "date": "ca. 1930 / 2023",
    "lat": 40.41552,
    "lon": -3.70742,
    "loc": "estimate",
