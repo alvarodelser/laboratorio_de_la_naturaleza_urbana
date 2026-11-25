@@ -1,23 +1,70 @@
-identificador,lat,lon,radio_m,lugar
-1,40.4110,-3.6650,2000,"Arroyo Abroñigal, tramo Ventas - Puente de Vallecas (hoy M-30); punto exacto desconocido"
-2,40.4410,-3.6240,300,Parque Marqués de Suanzes
-7,40.4437,-3.6140,300,Quinta de Torre Arias
-8,40.4497,-3.6080,150,"Iglesia de Canillejas, C/ Párroco Luis Calleja"
-9,40.4470,-3.6010,500,Cocheras de metro de Canillejas
-10,40.4505,-3.5965,400,Ciudad Pegaso
-12,40.4213,-3.6462,250,Pinar de la Elipa
-13,40.4410,-3.6270,600,"Carretera de Aragón, puente de Trancos sobre el arroyo de la Quinta"
-14,40.4430,-3.6100,300,"C/ Boltaña"
-15,40.4480,-3.6080,800,Canillejas
-16,40.4505,-3.6110,200,"C/ de la Esfinge esquina C/ Castor, Canillejas"
-17,40.4500,-3.6100,250,"C/ Diana, Canillejas"
-18,40.4194,-3.6930,80,Plaza de Castelar (hoy Cibeles)
-19,40.4085,-3.7375,400,"Carretera de Extremadura, colegio de San Buenaventura"
-20,40.4302,-3.6622,120,Puente de Ventas
-21,40.4600,-3.7470,500,Parque Sindical (Puerta de Hierro)
-22,40.4130,-3.7240,400,"Manzanares, Puerta del Ángel"
-23,40.4145,-3.7175,120,Puente de Segovia
-24,40.4234,-3.7122,150,Plaza de España
-25,40.4240,-3.7140,200,"Plaza de España, Torre de Madrid y cuartel de la Montaña"
-26,40.4181,-3.6835,150,Estanque del Retiro
-27,40.4169,-3.7035,80,Puerta del Sol
+identificador,lat,lon,radio_m,lugar,confianza,fuentes
+1,40.4110,-3.6650,2000,"Arroyo Abroñigal, tramo Ventas - Puente de Vallecas (hoy M-30); punto exacto desconocido",,
+2,40.4410,-3.6240,300,Parque Marqués de Suanzes,,
+7,40.4437,-3.6140,300,Quinta de Torre Arias,,
+8,40.4497,-3.6080,150,"Iglesia de Canillejas, C/ Párroco Luis Calleja",,
+9,40.4470,-3.6010,500,Cocheras de metro de Canillejas,,
+10,40.4505,-3.5965,400,Ciudad Pegaso,,
+12,40.4213,-3.6462,250,Pinar de la Elipa,,
+13,40.4410,-3.6270,600,"Carretera de Aragón, puente de Trancos sobre el arroyo de la Quinta",,
+14,40.4430,-3.6100,300,C/ Boltaña,,
+15,40.4480,-3.6080,800,Canillejas,,
+16,40.4505,-3.6110,200,"C/ de la Esfinge esquina C/ Castor, Canillejas",,
+17,40.4500,-3.6100,250,"C/ Diana, Canillejas",,
+18,40.4194,-3.6930,80,Plaza de Castelar (hoy Cibeles),,
+19,40.4085,-3.7375,400,"Carretera de Extremadura, colegio de San Buenaventura",,
+20,40.4302,-3.6622,120,Puente de Ventas,,
+21,40.4600,-3.7470,500,Parque Sindical (Puerta de Hierro),,
+22,40.4130,-3.7240,400,"Manzanares, Puerta del Ángel",,
+23,40.4145,-3.7175,120,Puente de Segovia,,
+24,40.4234,-3.7122,150,Plaza de España,,
+25,40.4240,-3.7140,200,"Plaza de España, Torre de Madrid y cuartel de la Montaña",,
+26,40.4181,-3.6835,150,Estanque del Retiro,,
+27,40.4169,-3.7035,80,Puerta del Sol,,
+28,40.42700,-3.61500,1500,"Barrio de San Blas (Gran San Blas), punto aproximado del barrio",baja,https://es.wikipedia.org/wiki/San_Blas-Canillejas
+29,40.40065,-3.72585,100,"Junto a la Ermita de San Isidro, mirando a la Pradera y al Puente de Toledo",alta,https://es.wikipedia.org/wiki/Ermita_de_San_Isidro_(Madrid)
+30,40.43350,-3.64733,100,"Plaza de Quintana, calle de Alcalá (Ciudad Lineal)",alta,https://es.wikipedia.org/wiki/Estación_de_Quintana
+31,40.43300,-3.66200,900,Tramo de la M-30 entre Fuente del Berro y Parque de las Avenidas (aproximado),baja,https://es.wikipedia.org/wiki/Estación_de_Parque_de_las_Avenidas
+33,40.41417,-3.72289,100,"Puente de Segovia, sobre el Manzanares",alta,https://es.wikipedia.org/wiki/Puente_de_Segovia
+35,40.43277,-3.70105,80,Plaza de Olavide (Chamberí),alta,https://es.wikipedia.org/wiki/Plaza_de_Olavide
+36,40.41530,-3.71360,80,"Esquina de Bailén con Almudena, junto a los actuales Jardines de Larra frente a la catedral",media,https://opusdei.org/es-es/article/calle-del-codo-y-casa-de-los-lujanes/
+37,40.39950,-3.70000,1300,"Paseo de Santa María de la Cabeza, tramo sin determinar (centro del paseo histórico)",baja,https://es.wikipedia.org/wiki/Paseo_de_Santa_María_de_la_Cabeza
+38,40.41900,-3.75000,2500,Casa de Campo; puente no identificado,baja,https://es.wikipedia.org/wiki/Casa_de_Campo
+39,40.40953,-3.76094,60,"Antiguo Puente de Húmera o del Álamo Negro sobre el Meaques, actual entrada principal del Zoo",alta,https://lacasadecampo.es/2021/01/puente-del-alamo-negro/ https://lacasadecampo.es/2021/01/puente-de-hierro/
+40,40.42020,-3.72040,100,"Glorieta de San Vicente, junto a la Puerta de San Vicente",alta,https://es.wikipedia.org/wiki/Puerta_de_San_Vicente
+41,40.43367,-3.73594,80,"Puente de los Franceses, sobre el Manzanares",alta,https://es.wikipedia.org/wiki/Puente_de_los_Franceses
+42,40.39850,-3.69350,900,"Paseo de las Delicias (entre Atocha y Legazpi), tramo sin determinar",media,https://es.wikipedia.org/wiki/Paseo_de_las_Delicias
+43,40.39188,-3.69850,300,"Matadero Municipal (Paseo de la Chopera); vía de ganado en el lado oeste, junto al Manzanares",media,https://es.wikipedia.org/wiki/Matadero_Madrid
+44,40.45931,-3.71747,200,"Asilo de la Paloma (desde 1910), Dehesa de la Villa, hoy IES Virgen de la Paloma (Francos Rodríguez 106)",alta,https://www.comunidad.madrid/node/359 https://redined.educacion.gob.es/xmlui/bitstream/handle/11162/81512/00820113012846.pdf?sequence=1
+45,40.41900,-3.75000,2500,"Finca en la zona de la Casa de Campo, no identificada",baja,https://es.wikipedia.org/wiki/Casa_de_Campo
+46,40.41417,-3.72289,100,"Puente de Segovia, sobre el Manzanares",alta,https://es.wikipedia.org/wiki/Puente_de_Segovia
+47,40.41200,-3.72000,2500,"Esclusa de la canalización del Manzanares, no identificada (tramo urbano del río)",baja,https://es.wikipedia.org/wiki/Río_Manzanares
+48,40.40290,-3.76076,80,"Antigua Puerta de la Venta, en la tapia sur junto a la carretera de Extremadura; hoy boca de metro Casa de Campo",alta,https://lacasadecampo.es/1932/12/la-puerta-de-la-venta/
+49,40.41444,-3.70120,80,Plaza de Santa Ana,alta,https://es.wikipedia.org/wiki/Plaza_de_Santa_Ana_(Madrid)
+50,40.41820,-3.72000,250,Entrada al Campo del Moro por el Paseo de la Virgen del Puerto (punto aproximado),media,https://es.wikipedia.org/wiki/Jardines_del_Campo_del_Moro https://www.wikidata.org/wiki/Q1070622
+51,40.41883,-3.72197,80,"Puente del Rey, sobre el Manzanares",alta,https://es.wikipedia.org/wiki/Puente_del_Rey_(Madrid)
+52,40.41550,-3.69350,50,"Hotel Ritz, Plaza de la Lealtad",alta,https://es.wikipedia.org/wiki/Hotel_Ritz_(Madrid)
+53,40.38300,-3.73500,2500,"Granja avícola en Carabanchel, sin ubicación precisa",baja,https://es.wikipedia.org/wiki/Carabanchel
+54,40.41900,-3.75000,2500,"Colmenas en la Casa de Campo; había varios colmenares (p. ej. de la Torrecilla), no identificable",baja,https://lacasadecampo.es/colmenas-en-la-casa-de-campo/
+55,40.41000,-3.72000,2000,"Lavadero en las orillas del Manzanares, tramo no identificado",baja,https://es.wikipedia.org/wiki/Río_Manzanares
+56,40.41236,-3.70474,80,Plaza de Tirso de Molina,alta,https://es.wikipedia.org/wiki/Plaza_de_Tirso_de_Molina
+57,40.41360,-3.69300,700,"Paseo del Prado (Cibeles–Atocha), tramo sin determinar",media,https://es.wikipedia.org/wiki/Paseo_del_Prado
+58,40.41890,-3.72290,80,"Puerta del Río o del Rey de la Casa de Campo, a la salida oeste del Puente del Rey",alta,https://madridciudadaniaypatrimonio.org/sites/default/files/Informe%20Puerta%20del%20Rey%20DIC%202011.pdf https://es.wikipedia.org/wiki/Puente_del_Rey_(Madrid)
+59,40.41444,-3.70120,70,"Monumento a Calderón de la Barca, Plaza de Santa Ana",alta,https://es.wikipedia.org/wiki/Plaza_de_Santa_Ana_(Madrid)
+60,40.42957,-3.72416,80,"Fuente de la Fama en el Parque del Oeste (1911-1941), glorieta de Camoens con Francisco y Jacinto Alcántara (hoy Fuente de Juan de Villanueva)",media,https://www.miradormadrid.com/?p=5371 https://es.hispanopedia.com/wiki/Fuente_de_Juan_de_Villanueva
+61,40.40000,-3.72650,300,"Cerro de San Isidro, junto a la ermita y el cementerio (cámara hacia Madrid)",media,https://es.wikipedia.org/wiki/Ermita_de_San_Isidro_(Madrid)
+62,40.45931,-3.71747,200,"Asilo de la Paloma, Dehesa de la Villa, hoy IES Virgen de la Paloma",alta,https://www.comunidad.madrid/node/359 https://redined.educacion.gob.es/xmlui/bitstream/handle/11162/81512/00820113012846.pdf?sequence=1
+63,40.39850,-3.69350,900,"Paseo de las Delicias, tramo sin determinar",media,https://es.wikipedia.org/wiki/Paseo_de_las_Delicias
+64,40.40000,-3.72650,300,"Cerro de San Isidro, junto a la ermita y el cementerio (cámara hacia Madrid)",media,https://es.wikipedia.org/wiki/Ermita_de_San_Isidro_(Madrid)
+65,40.42020,-3.72040,100,Glorieta de San Vicente,alta,https://es.wikipedia.org/wiki/Puerta_de_San_Vicente
+66,40.41900,-3.75000,2500,"Finca de la Casa de Campo, no identificada",baja,https://es.wikipedia.org/wiki/Casa_de_Campo
+67,40.43367,-3.73594,1500,Puente ferroviario no identificado; centrado en el Puente de los Franceses (ferrocarril del Norte) como hipótesis,baja,https://es.wikipedia.org/wiki/Puente_de_los_Franceses
+68,40.42021,-3.71394,100,"Antiguas Caballerizas Reales (derribadas 1933-34), hoy Jardines de Sabatini",alta,https://es.wikipedia.org/wiki/Jardines_de_Sabatini
+69,40.42021,-3.71394,100,"Antiguas Caballerizas Reales, hoy Jardines de Sabatini",alta,https://es.wikipedia.org/wiki/Jardines_de_Sabatini
+70,40.39968,-3.71494,100,"Puente de Toledo, sobre el Manzanares",alta,https://es.wikipedia.org/wiki/Puente_de_Toledo
+71,40.39968,-3.71494,100,"Puente de Toledo, sobre el Manzanares",alta,https://es.wikipedia.org/wiki/Puente_de_Toledo
+72,40.42790,-3.72470,150,"Escuela de Cerámica de la Moncloa, junto a La Tinaja (allí desde 1914)",media,https://ninos.kiddle.co/La_Tinaja_(escuela_de_cerámica)
+73,40.41570,-3.74620,200,"Escalerilla del Lozoya (desaparecida), Pinar y Glorieta de las Siete Hermanas",media,https://patrimonioypaisaje.madrid.es/FWProjects/monumenta/ficheros/El%20paisaje%20acu%C3%A1tico%20de%20la%20casa%20de%20campo.%20Por%20Mar%C3%ADa%20Jos%C3%A9%20Egido%20Esteso.pdf
+74,40.41552,-3.70742,80,Plaza Mayor,alta,https://es.wikipedia.org/wiki/Plaza_Mayor_de_Madrid
+75,40.42908,-3.74936,50,"Acueducto de Valdeza (Puente Colorado), sobre el arroyo y camino de Valdeza",alta,https://lacasadecampo.es/2021/01/12/el-acueducto-de-valdeza/
+76,40.43264,-3.74803,50,"Fuente de Covatillas, carretera de Garabitas a la altura del Depósito de Aguas",alta,https://lacasadecampo.es/1983/12/fuente-de-cobatillas/

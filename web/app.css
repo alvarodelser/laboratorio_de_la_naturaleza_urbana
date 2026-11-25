@@ -13,9 +13,10 @@
 :root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
 *{box-sizing:border-box;min-width:0}
 html,body{height:100%}
-body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.45 var(--font);overflow:hidden}
+html{touch-action:pan-x pan-y}   /* no page pinch-zoom or double-tap zoom: two fingers zoom the map, not the page */
+body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.45 var(--font);overflow:hidden;overscroll-behavior:none;-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}
 #root,.app{height:100%}.app{position:relative}
-.map{position:relative;height:100%;overflow:hidden;cursor:grab;touch-action:none;user-select:none}
+.map{position:relative;height:100%;overflow:hidden;cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}
 .map.drag{cursor:grabbing}.map.over{cursor:pointer}.map.picking{cursor:crosshair}
 .map>canvas{position:absolute;inset:0;width:100%;height:100%;transform-origin:0 0}.map>canvas.under,.map>canvas.over{transform:none!important;pointer-events:none}
 /* outside the frame: paper. Two generated layers with different periods so they never line up: paper.jpg (2048 px shown at 1024:
@@ -24,7 +25,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.45 var(--font);o
 .map{background:url(paper.jpg) 0 0/1024px 1024px,url(paper-mottle.jpg) 0 0/1700px 1700px,color-mix(in srgb,var(--bg) 96%,#d9cfbd);background-blend-mode:multiply}
 :root[data-theme=dark] .map{background-blend-mode:soft-light}
 @media(prefers-color-scheme:dark){:root:not([data-theme=light]) .map{background-blend-mode:soft-light}}
-.title{position:absolute;left:16px;top:12px;font-size:13px;font-weight:700;letter-spacing:.02em;color:var(--ink);pointer-events:none}
+.title{position:absolute;left:calc(16px + env(safe-area-inset-left));top:calc(12px + env(safe-area-inset-top));max-width:min(380px,calc(100% - 200px));font-size:13px;font-weight:700;letter-spacing:.02em;color:var(--ink);pointer-events:none}
 
 /* squares that hold data: an ink outline and their count. Hover: today's orthophoto reveals itself and the 1956 one follows a slider under the pointer.
    Click: the square is pinned (a press, four corners closing in) and its files are laid out around it. */
@@ -39,7 +40,8 @@ body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.45 var(--font);o
 .blk .orth .bf{clip-path:inset(0 calc(100% - var(--w,50%)) 0 0)}
 .blk .orth .seam{position:absolute;top:0;bottom:0;left:var(--w,50%);width:1.5px;margin-left:-.75px;background:#fff;box-shadow:0 0 2px rgb(0 0 0/.35)}
 .blk .orth .tg{position:absolute;bottom:4px;font-size:10px;line-height:1.4;padding:0 4px;background:rgb(255 255 255/.9);color:#1f1f1f}
-.blk.intro .bf{transition:clip-path .55s var(--ease)}.blk.intro .seam{transition:left .55s var(--ease)}
+.blk .orth .seam{transition:opacity .2s}.blk.swept .seam{opacity:0}
+.blk.intro .bf{transition:clip-path .55s var(--ease)}.blk.intro .seam{transition:left .55s var(--ease),opacity .2s}
 .blk.on{z-index:4}.blk.on .orth{opacity:1}.blk.on .lift,.blk.on .tab{opacity:1}
 .blk.on .orth{animation:orth-in .5s var(--ease) both}
 @keyframes orth-in{from{clip-path:inset(22%);transform:scale(.94)}to{clip-path:inset(0);transform:none}}
@@ -53,7 +55,8 @@ body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.45 var(--font);o
 .blk.pin .corners{opacity:1;transform:none}
 .map.focus .blk:not(.on){opacity:.12}
 .pager{position:absolute;z-index:7;transform:translateX(-50%);display:flex;align-items:center;gap:6px;font-size:12px;background:var(--card);border:1px solid var(--line);padding:2px;animation:rise .3s ease both}
-.pager button{min-height:28px;min-width:28px;padding:0;border:0}
+.pager button{min-height:28px;min-width:28px;padding:0;border:0}.pager span{white-space:nowrap}
+.blk .tab.rt{left:auto;right:-1px}
 .bw canvas.now{filter:grayscale(1) brightness(1.314) contrast(.797)}
 
 /* squares that show a case (unlike squares that hold data): a white, semi-transparent mat with a white border, the item mounted inside.
@@ -87,7 +90,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.45 var(--font);o
 .media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:opacity .6s}
 .media img.v{opacity:0}.media img.v.on{opacity:1}
 .media.txt{background:var(--card);padding:6px 7px 22px;font:italic 400 13px/1.35 var(--font);-webkit-mask:linear-gradient(#000 70%,transparent)}
-.media.txt p{margin:0}
+.media.txt p{margin:0;white-space:pre-line}
 .media.file{display:grid;place-items:center;align-content:center;gap:2px;background:var(--card);color:var(--mute);font-size:11px;text-transform:uppercase;letter-spacing:.06em}
 .media.file b{font:400 34px/1 var(--font);color:var(--ink)}
 .media.snd{display:flex;align-items:center;background:var(--card);padding:6px}
@@ -127,12 +130,12 @@ body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.45 var(--font);o
 .viewer figcaption{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--mute)}
 .viewer figcaption .x{margin-left:auto;min-height:28px;min-width:28px;padding:0;font-size:18px;line-height:1}
 .viewer .pic{position:relative;display:inline-block;max-width:100%;line-height:0;align-self:center}
-.viewer .pic img{max-width:calc((100vw - 340px)*.6 - 44px);max-height:calc(100vh - 230px);display:block;user-select:none;-webkit-user-drag:none}
+.viewer .pic img{max-width:calc((100vw - 340px)*.6 - 44px);max-height:calc(100vh - 230px);max-height:calc(100dvh - 230px);display:block;user-select:none;-webkit-user-drag:none}
 .viewer .tag{position:absolute;bottom:10px;padding:1px 7px;font-size:12px;line-height:1.5;background:rgb(255 255 255/.92);color:#1f1f1f;z-index:22}
 .viewer .cap{max-width:calc((100vw - 340px)*.6 - 44px);font-size:13px;line-height:1.4}
 .viewer .cap p{margin:0 0 4px}.viewer .cap b{display:inline-block;min-width:1.3em;font-weight:600}.viewer .cap i{color:var(--mute);font-style:normal}
 .viewer .cap a{color:var(--mute);font-size:12px;white-space:nowrap}
-.viewer .text{max-width:30em;margin:0;font:400 clamp(15px,1.5vw,19px)/1.55 var(--font)}
+.viewer .text{max-width:30em;margin:0;white-space:pre-line;font:400 clamp(15px,1.5vw,19px)/1.55 var(--font)}
 .viewer .text small{display:block;font:12px var(--font);color:var(--mute);margin-bottom:14px;letter-spacing:.04em;text-transform:uppercase}
 .viewer .doc{width:min(640px,55vw);height:70vh;display:flex;flex-direction:column;gap:8px}
 .viewer .doc iframe{flex:1;border:1px solid var(--line);background:#fff;width:100%}
@@ -143,7 +146,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.45 var(--font);o
 .files .row{display:flex;align-items:center;gap:10px;width:100%;border:0;border-left:2px solid transparent;text-align:left;min-height:48px;padding:6px 14px;background:none;font-size:13px}
 .files .row:hover{background:color-mix(in srgb,var(--ink) 4%,transparent)}
 .files .row.sel{border-left-color:var(--ink);background:color-mix(in srgb,var(--ink) 6%,transparent);font-weight:600}
-.files .row span{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.files .row>span:not(.th){flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .files .th{flex:none;width:44px;height:44px;background:var(--b1);display:grid;place-items:center;overflow:hidden;font:400 20px/1 var(--font);color:var(--mute)}
 .files .th img{width:100%;height:100%;object-fit:cover}
 .files section{border-bottom:1px solid var(--line);padding:4px 0 8px}
@@ -160,9 +163,9 @@ button.i[aria-expanded=true]{color:var(--ink);border-color:var(--ink)}
 button,input,select{font-family:inherit}
 button{font:inherit;font-size:14px;color:var(--ink);background:var(--card);border:1px solid var(--line);min-height:36px;min-width:36px;padding:0 12px;cursor:pointer}
 button:hover{border-color:var(--frame)}button:focus-visible,input:focus-visible{outline:2px solid var(--tree);outline-offset:2px}
-.tools{position:absolute;z-index:7;right:14px;bottom:14px;display:flex;flex-direction:column;gap:4px}.tools button{padding:0;width:36px;font-size:16px}
+.tools{position:absolute;z-index:7;right:calc(14px + env(safe-area-inset-right));bottom:calc(14px + env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:4px}.tools button{padding:0;width:36px;font-size:16px}
 /* legend: collapsed to one line by default */
-.legend{position:absolute;left:14px;bottom:14px;z-index:7;background:var(--card);border:1px solid var(--line);font-size:11px;max-width:calc(100% - 80px);padding:4px 6px}
+.legend{position:absolute;left:calc(14px + env(safe-area-inset-left));bottom:calc(14px + env(safe-area-inset-bottom));z-index:7;background:var(--card);border:1px solid var(--line);font-size:11px;max-width:calc(100% - 80px);padding:4px 6px}
 .legend .row{display:flex;align-items:center;gap:2px;flex-wrap:wrap}
 .legend .ly{display:flex;align-items:center;gap:6px;min-height:26px;padding:0 7px;border:0;background:none;font-size:11px;color:var(--ink);opacity:.4;transition:opacity .15s}
 .legend .ly[aria-pressed=true]{opacity:1}
@@ -174,18 +177,38 @@ button:hover{border-color:var(--frame)}button:focus-visible,input:focus-visible{
 @media(max-width:700px){
  .explore{grid-template-columns:1fr;grid-template-rows:58% 42%}
  .explore .files{border-left:0;border-top:1px solid var(--line);transform:translateY(18px)}
- .viewer{padding:12px;place-items:center}.viewer .pic img,.viewer .cap{max-width:calc(100vw - 48px)}.viewer .pic img{max-height:calc(58vh - 120px)}
+ .viewer{padding:12px;place-items:center}.viewer .pic img,.viewer .cap{max-width:calc(100vw - 48px)}.viewer .pic img{max-height:calc(58vh - 120px);max-height:calc(58dvh - 120px)}
+ .explore .files{padding-bottom:env(safe-area-inset-bottom)}
+ .title p{width:calc(100vw - 32px - env(safe-area-inset-left) - env(safe-area-inset-right))}
+ .stage .chip.note{display:none}
+ .viewer .doc{width:calc(100vw - 48px);height:calc(58dvh - 60px)}.viewer .aud{width:calc(100vw - 48px)}.sound.big .wave{height:80px}
+}
+/* touch screens: bigger targets, and form text at 16 px so iOS doesn't zoom in on focus */
+@media(pointer:coarse){
+ .legend .ly{min-height:36px;padding:0 9px}
+ button.i{width:32px;height:32px}
+ .pager button{min-height:40px;min-width:40px}
+ .viewer figcaption .x,.viewer .vhead .x{min-height:40px;min-width:40px}
+ .tools button{width:44px;min-height:44px}
+ .files .ch{padding:12px 16px 8px}
+ .propose input,.propose textarea{font-size:16px}
+ .propose .close{min-width:44px;min-height:44px}
+ .propose .kinds button,.propose .seg button,.propose .res button{min-height:44px}
+ .viewer .float,.viewer .vhead{touch-action:pan-y}
 }
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;transition:none!important}}
 
 /* proposing a case: the button, the point on the map, the form */
-.propbtn{position:absolute;right:14px;top:10px;z-index:8;font-size:12px;min-height:30px}
+.propbtn{position:absolute;right:calc(14px + env(safe-area-inset-right));top:calc(10px + env(safe-area-inset-top));z-index:8;font-size:12px;min-height:30px}
 .leads .mark .pm{fill:var(--ink);stroke:#fff;stroke-width:2}
 .propose{position:absolute;right:0;top:0;bottom:0;z-index:15;width:min(340px,100%);overflow:auto;background:var(--card);border-left:1px solid var(--line);
   padding:14px 16px 18px;display:flex;flex-direction:column;gap:10px;font-size:12px;box-shadow:-10px 0 30px rgb(0 0 0/.06);animation:rise .3s ease both}
 .propose header{display:flex;justify-content:space-between;align-items:center}.propose h2{margin:0;font-size:15px}
 .propose .close{border:0;font-size:18px;min-width:30px;padding:0}
 .propose .step{margin:0;color:var(--mute)}
+.propose .lead{margin:0;font-size:13px;line-height:1.5;color:var(--ink)}
+/* the map's short introduction, under its title */
+.title p{margin:6px 0 0;font-size:11px;font-weight:400;line-height:1.5;letter-spacing:0;color:var(--mute)}
 .propose label{display:flex;flex-direction:column;gap:3px;color:var(--mute)}.propose label small{font-size:10px}
 .propose input,.propose textarea{font:12px var(--font);color:var(--ink);background:var(--bg);border:1px solid var(--line);padding:6px 7px}
 .propose textarea{resize:vertical}
@@ -199,6 +222,49 @@ button:hover{border-color:var(--frame)}button:focus-visible,input:focus-visible{
 .propose .hp{position:absolute;left:-9999px;width:1px;height:1px}
 .propose .err{margin:0;color:#b3261e}.propose .send{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 .propose .note{margin:0;color:var(--mute);font-size:10px}
+/* what the visitor brings: photos, an audio or a text. First the kind (large while nothing is chosen), then three numbered
+   sections like an archive card: 1 the media, 2 where (search a name or tap the map), 3 its data */
+.propose .kinds{display:flex;border:1px solid var(--ink)}
+.propose .kinds button{flex:1;border:0;min-height:40px;font-size:13px;background:var(--card);display:flex;align-items:center;justify-content:center;gap:7px;padding:0 6px}
+.propose .kinds button+button{border-left:1px solid var(--ink)}
+.propose .kinds button b{font:400 15px/1 var(--font)}
+.propose .kinds button[aria-checked=true]{background:var(--ink);color:var(--bg)}
+.propose .kinds.big{flex-direction:column}
+.propose .kinds.big button{min-height:72px;flex-direction:column;align-items:flex-start;justify-content:center;gap:3px;padding:10px 14px;text-align:left}
+.propose .kinds.big button+button{border-left:0;border-top:1px solid var(--ink)}
+.propose .kinds.big button b{position:absolute;right:16px;font-size:26px;color:var(--mute)}.propose .kinds.big button{position:relative}
+.propose .kinds.big button span{font-size:15px;font-weight:700}.propose .kinds.big button small{color:var(--mute);font-size:11px}
+.propose .kinds.big button:hover{background:color-mix(in srgb,var(--ink) 5%,var(--card))}
+.propose section{display:flex;flex-direction:column;gap:9px;border-top:1px solid var(--line);padding-top:12px}
+.propose h3{margin:0;font-size:13px;font-weight:700;color:var(--ink);display:flex;align-items:center}
+.propose h3 .no{font-size:10px;font-weight:400;border:1px solid var(--ink);min-width:20px;text-align:center;padding:2px 0 1px;margin-right:8px;font-variant-numeric:tabular-nums}
+.propose .seg{display:flex;align-self:flex-start;border:1px solid var(--line)}
+.propose .seg button{border:0;min-height:30px;font-size:12px;padding:0 12px;background:var(--card);color:var(--mute)}
+.propose .seg button+button{border-left:1px solid var(--line)}
+.propose .seg button[aria-checked=true]{color:var(--ink);box-shadow:inset 0 -2px 0 var(--ink)}
+.propose .pair{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.propose .slot{display:flex;flex-direction:column;gap:5px}.propose .slot .lb{font-size:11px;color:var(--mute);text-transform:uppercase;letter-spacing:.05em}
+.propose .slot .addf,.propose .slot .ph{width:100%;height:auto;aspect-ratio:4/3}
+.propose .slot .ph{position:relative}.propose .slot .ph img{width:100%;height:100%;object-fit:cover;display:block}
+.propose .slot .ph button{position:absolute;right:3px;top:3px;min-width:22px;min-height:22px;padding:0;font-size:12px;line-height:1}
+.propose .search{display:flex;flex-direction:column;gap:6px}
+.propose .sbox{display:flex}.propose .sbox input{flex:1;border-right:0}.propose .sbox button{font-size:12px;min-height:0}
+.propose .res{list-style:none;margin:0;padding:0;border:1px solid var(--line)}
+.propose .res li+li{border-top:1px solid var(--line)}
+.propose .res button{display:block;width:100%;text-align:left;border:0;background:none;min-height:36px;padding:6px 8px;font-size:12px}
+.propose .res button:hover{background:color-mix(in srgb,var(--ink) 5%,transparent)}.propose .res i{font-style:normal;color:var(--mute)}
+.propose .res .osm{font-size:9px;color:var(--mute);padding:3px 8px;text-align:right}
+.propose .where{margin:0;color:var(--mute)}.propose .where.on{color:var(--ink)}.propose .where b{font-weight:400;font-size:10px;vertical-align:1px}
+.propose .where span{color:var(--mute)}
+.propose .audiopick{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.propose .audiopick>button{font-size:12px}
+.propose .addf.wide{width:auto;height:36px;padding:0 12px}
+.propose .audiopick.has audio{width:100%;height:36px}
+.propose .audiopick.has .nm{flex:1;color:var(--mute);font-size:11px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.propose .audiopick.has>button{min-width:30px;min-height:30px;padding:0}
+.propose .audiopick.rec{color:#b3261e}
+.propose .live{width:10px;height:10px;border-radius:50%;background:#b3261e;animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{opacity:.2}}
 
 /* a photo's year, on the photo */
 .yr{position:absolute;left:4px;top:4px;z-index:2;padding:0 5px;font-size:10px;line-height:1.6;background:rgb(255 255 255/.92);color:#1f1f1f;letter-spacing:.03em}
@@ -217,3 +283,36 @@ button:hover{border-color:var(--frame)}button:focus-visible,input:focus-visible{
 .viewer .ver figcaption{display:table-caption;caption-side:bottom;padding:6px 8px 8px;background:var(--card);font-size:11px;line-height:1.4;color:var(--ink)}
 .viewer .ver figcaption b{font-weight:700;margin-right:4px}.viewer .ver figcaption i{color:var(--mute);font-style:normal}
 .viewer .ver figcaption a{color:var(--mute);text-decoration:none}
+
+/* phones (after the base rules they override): a case's versions fill the stage, and proposing is a bottom sheet so the map stays in view above it */
+@media(max-width:700px){
+ .viewer.multi{align-items:center;padding:10px}.viewer .vgrid{justify-content:center;gap:8px}
+ .viewer .ver{padding:6px}
+ .viewer .ver .pic img{max-width:calc((100vw - 32px - 8px*(var(--cols) - 1))/var(--cols) - 12px);max-height:calc((58dvh - 70px)/var(--rows) - 70px)}
+ .propose{top:auto;left:0;width:100%;max-height:55%;border-left:0;border-top:1px solid var(--line);box-shadow:0 -10px 30px rgb(0 0 0/.12);padding-bottom:calc(18px + env(safe-area-inset-bottom))}
+}
+
+/* phones (no hover). The pinned square stands alone: the other squares go; its files show one at a time, captions wrap (no catalogue number).
+   Explorer: 1956 left of a seam you drag, instead of the lens; an open file covers the map, swipe for the next */
+@media(hover:none){
+ .map.focus .blk:not(.on){opacity:0}
+ .card .lab{white-space:normal;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;line-clamp:3;font-size:11px;line-height:1.3;padding:2px 6px}
+ .card .lab i{display:none}
+ .lensmap.cmp{cursor:default}
+ .lensmap.cmp .old{clip-path:inset(0 calc(100% - var(--sx)) 0 0)}
+ .lensmap.cmp.glide .old{transition:clip-path .6s var(--ease)}.lensmap.cmp.glide .seamv{transition:left .6s var(--ease)}
+ .lensmap .seamv{position:absolute;top:0;bottom:0;width:2px;margin-left:-1px;background:#fff;box-shadow:0 0 3px rgb(0 0 0/.4);pointer-events:none}
+ .lensmap .seamv i{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:38px;height:38px;border-radius:50%;background:#fff;color:#1f1f1f;
+   box-shadow:0 1px 6px rgb(0 0 0/.35);display:grid;place-items:center;font:700 13px/1 var(--font);font-style:normal;letter-spacing:-.05em}
+ .lensmap .stg{position:absolute;top:8px;font-size:11px;padding:1px 6px;background:rgb(255 255 255/.92);color:#1f1f1f;pointer-events:none;transition:opacity .2s}
+ .viewer{pointer-events:auto;touch-action:pan-y;padding:10px;place-items:center;background:color-mix(in srgb,var(--bg) 62%,transparent);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}
+ .viewer .float,.viewer .vgrid{animation:slide .32s var(--ease) both}.viewer.multi .float{animation:none}
+ @keyframes slide{from{opacity:0;transform:translateX(calc(var(--dir,0)*48px)) translateY(calc((1 - var(--dir,0)*var(--dir,0))*6px))}}
+ .viewer .ver{display:flex;flex-direction:column;width:min-content;padding:6px}
+ .viewer .ver figcaption{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;padding:5px 2px 0;min-width:100%}
+}
+@media(hover:none) and (max-width:700px){
+ .explore{transition:clip-path .6s var(--ease),grid-template-rows .4s var(--ease)}
+ .explore.item{grid-template-rows:74% 26%}
+ .viewer .pic img{max-height:calc(74dvh - 130px)}
+}

@@ -8,8 +8,8 @@
    "items": [
     {
      "type": "photo",
-     "src": "media/fotos/1-a.jpg",
      "label": "Foto de 1900 del antiguo arroyo Abroñigal, que discurría donde actualmente está la autopista M-30 en la zona este de Madrid (de Madrid a Puente de Vallecas). El Arroyo Abroñigal (denominado también Arroyo de Valnegral) era un afluente del río Manzanares. El emplazamiento exacto de la foto es desconocido.",
+     "src": "media/fotos/1-a.jpg",
      "year": "1900",
      "credit": "Augusto T. Arcimís - Archivo Arcivís",
      "link": "https://drive.google.com/file/d/1at95BYpd0EINUy0hUbgSugz9Hao_RIRp/view?usp=drive_link"
@@ -28,8 +28,8 @@
    "items": [
     {
      "type": "photo",
-     "src": "media/fotos/2-a.jpg",
      "label": "Parque Marques de Suanzes vista aerea 1960",
+     "src": "media/fotos/2-a.jpg",
      "year": "1960",
      "credit": "Hemeroteca de Suanzes - https://suanzes.org/galeria-fotos-suanzes",
      "link": "https://drive.google.com/file/d/1FhK0F1GJ9u2uQidOxGqMJxcevT7MkuPk/view?usp=drive_link"
@@ -50,23 +50,22 @@
      "type": "versions",
      "photos": [
       {
-       "src": "media/fotos/3-a.jpg",
        "label": "C/ Jose Arcones Gil",
+       "src": "media/fotos/3-a.jpg",
+       "credit": "Patrick",
        "link": "https://drive.google.com/file/d/1P_r76MUjgPacGt76lnAFZ9LiigoYDWib/view?usp=drive_link",
        "v": "a"
       },
       {
-       "src": "media/fotos/3-b.jpg",
        "label": "C/ Jose Arcones Gil , Policía",
-       "year": "2026",
-       "credit": "Elaboración propia",
+       "src": "media/fotos/3-b.jpg",
+       "credit": "Patrick",
        "link": "https://drive.google.com/file/d/1nmWLyxcx1PDw8CiZVjC3j_AFZwt0UiKM/view?usp=drive_link",
        "v": "b"
       }
      ]
     }
    ],
-   "date": "2026",
    "lat": 40.43436,
    "lon": -3.63828,
    "loc": "gps"
@@ -80,23 +79,22 @@
      "type": "versions",
      "photos": [
       {
-       "src": "media/fotos/4-a.jpg",
        "label": "C/ Jose Arcones Gil, Colegio",
+       "src": "media/fotos/4-a.jpg",
+       "credit": "Patrick",
        "link": "https://drive.google.com/file/d/1PaTrbKc7h2eFDYbRVK9rMcP6N7lmxqnq/view?usp=drive_link",
        "v": "a"
       },
       {
-       "src": "media/fotos/4-b.jpg",
        "label": "C/ Jose Arcones Gil",
-       "year": "2026",
-       "credit": "Elaboración propia",
+       "src": "media/fotos/4-b.jpg",
+       "credit": "Patrick",
        "link": "https://drive.google.com/file/d/1dl7HbRdehKvqBBzTFS0kkd-rXV2pk8dd/view?usp=drive_link",
        "v": "b"
       }
      ]
     }
    ],
-   "date": "2026",
    "lat": 40.43505,
    "lon": -3.63843,
    "loc": "gps"
@@ -110,24 +108,22 @@
      "type": "versions",
      "photos": [
       {
-       "src": "media/fotos/5-a.jpg",
        "label": "Parque Arriaga C/ Gonzalo de Berceo",
+       "src": "media/fotos/5-a.jpg",
        "credit": "Luis Puicercús Vázquez | Album de fotos: Ventas - Ciudad Lineal 1900-1960",
        "link": "https://drive.google.com/file/d/1JtOzx8Mtylv8JdrkHFXByCZ4qdzyBytI/view?usp=drive_link",
        "v": "a"
       },
       {
-       "src": "media/fotos/5-b.jpg",
        "label": "Parque Arriaga C/ Gonzalo de Berceo",
-       "year": "2026",
-       "credit": "Elaboración propia",
+       "src": "media/fotos/5-b.jpg",
+       "credit": "Patrick",
        "link": "https://drive.google.com/file/d/1zj6RZFh1ypNwZV59RRX2YhgeD_mruWgK/view?usp=drive_link",
        "v": "b"
       }
      ]
     }
    ],
-   "date": "2026",
    "lat": 40.42641,
    "lon": -3.64486,
    "loc": "gps"
@@ -141,28 +137,29 @@
      "type": "versions",
      "photos": [
       {
-       "src": "media/fotos/6-a.jpg",
        "label": "Calle Esteban Collantes 37-39",
+       "src": "media/fotos/6-a.jpg",
        "credit": "Luis Puicercús Vázquez - Album de fotos: Ventas - Ciudad Lineal 1900-1960",
+       "link": "https://drive.google.com/file/d/1QdcInApUKcvkQlJf-NrZLtz95J4pfu2B/view?usp=drive_link",
        "v": "a"
       },
       {
-       "src": "media/fotos/6-b.jpg",
        "label": "Calle Esteban Collantes 37-38",
+       "src": "media/fotos/6-b.jpg",
        "credit": "Luis Puicercús Vázquez - Album de fotos: Ventas - Ciudad Lineal 1900-1961",
+       "link": "https://drive.google.com/file/d/1N4DqjID8biMzn7fTSrw145sCeE9K_9bd/view?usp=drive_link",
        "v": "b"
       },
       {
-       "src": "media/fotos/6-c.jpg",
        "label": "Calle Esteban Collantes 37-39",
-       "year": "2026",
-       "credit": "Elaboración propia",
+       "src": "media/fotos/6-c.jpg",
+       "credit": "Patrick",
+       "link": "https://drive.google.com/file/d/1VaRDOLdZStgPFHIFvvCQS757LhNN6eBO/view?usp=drive_link",
        "v": "c"
       }
      ]
     }
    ],
-   "date": "2026",
    "lat": 40.43183,
    "lon": -3.63999,
    "loc": "gps"
@@ -176,22 +173,20 @@
      "type": "versions",
      "photos": [
       {
-       "src": "media/fotos/11-a.jpg",
        "label": "c/ Gregorio Donas con Llanos de Escurdo",
+       "src": "media/fotos/11-a.jpg",
        "credit": "Luis Puicercús Vázquez - Album de fotos: Ventas - Ciudad Lineal 1900-1961",
        "v": "a"
       },
       {
-       "src": "media/fotos/11-b.jpg",
        "label": "c/ Gregorio Donas con Llanos de Escurdo",
-       "year": "2026",
-       "credit": "Elaboración propia",
+       "src": "media/fotos/11-b.jpg",
+       "credit": "Patrick",
        "v": "b"
       }
      ]
     }
    ],
-   "date": "2026",
    "lat": 40.42731,
    "lon": -3.63695,
    "loc": "gps"
@@ -205,14 +200,14 @@
      "type": "versions",
      "photos": [
       {
-       "src": "media/fotos/12-a.jpg",
        "label": "Pinar La Elipa antes y despues filomena",
+       "src": "media/fotos/12-a.jpg",
        "credit": "Madriddiario.es",
        "v": "a"
       },
       {
-       "src": "media/fotos/12-b.jpg",
        "label": "Pinar La Elipa antes y despues filomena",
+       "src": "media/fotos/12-b.jpg",
        "credit": "Madriddiario.es",
        "v": "b"
       }
@@ -231,8 +226,8 @@
    "items": [
     {
      "type": "photo",
-     "src": "media/fotos/13-a.jpg",
      "label": "Carretera de Aragón, con el arroyo de la Quinta parando por debajo del puente de Trancos",
+     "src": "media/fotos/13-a.jpg",
      "credit": "Leo del Val | Canillejas Imágenes de un pueblo"
     }
    ],
@@ -248,8 +243,8 @@
    "items": [
     {
      "type": "photo",
-     "src": "media/fotos/18-a.jpg",
      "label": "Desfile de la victoria en la Plaza de Castelar",
+     "src": "media/fotos/18-a.jpg",
      "year": "1957-64",
      "credit": "Aquel Madrid que se nos fue"
     }
@@ -267,8 +262,8 @@
    "items": [
     {
      "type": "photo",
-     "src": "media/fotos/19-a.jpg",
      "label": "La Carretera de Extremedura",
+     "src": "media/fotos/19-a.jpg",
      "year": "1957-65",
      "credit": "Aquel Madrid que se nos fue"
     }
@@ -286,8 +281,8 @@
    "items": [
     {
      "type": "photo",
-     "src": "media/fotos/20-a.jpg",
      "label": "El arroyo Abronigal (luego M-30) en el puente de Ventas",
+     "src": "media/fotos/20-a.jpg",
      "year": "1957-66",
      "credit": "Aquel Madrid que se nos fue"
     }
@@ -305,8 +300,8 @@
    "items": [
     {
      "type": "photo",
-     "src": "media/fotos/21-a.jpg",
      "label": "El Parque Sindical un Día Festivo",
+     "src": "media/fotos/21-a.jpg",
      "year": "1957-67",
      "credit": "Aquel Madrid que se nos fue"
     }
@@ -324,8 +319,8 @@
    "items": [
     {
      "type": "photo",
-     "src": "media/fotos/22-a.jpg",
-     "label": "Baño de multitud en el río Manzanares"
+     "label": "Baño de multitud en el río Manzanares",
+     "src": "media/fotos/22-a.jpg"
     }
    ],
    "lat": 40.413,
@@ -340,8 +335,8 @@
    "items": [
     {
      "type": "photo",
-     "src": "media/fotos/23-a.jpg",
-     "label": "Canalización del Manzanares a su Paso por el Puente de Segovia"
+     "label": "Canalización del Manzanares a su Paso por el Puente de Segovia",
+     "src": "media/fotos/23-a.jpg"
     }
    ],
    "lat": 40.4145,
@@ -356,8 +351,8 @@
    "items": [
     {
      "type": "photo",
-     "src": "media/fotos/24-a.jpg",
-     "label": "Jugando a Indios y cowboys en la plaza de españa"
+     "label": "Jugando a Indios y cowboys en la plaza de españa",
+     "src": "media/fotos/24-a.jpg"
     }
    ],
    "lat": 40.4234,
@@ -372,8 +367,8 @@
    "items": [
     {
      "type": "photo",
-     "src": "media/fotos/25-a.jpg",
-     "label": "Construcción de la torre de madrid y juego de frontón en las tapias del cuartel de la montaña"
+     "label": "Construcción de la torre de madrid y juego de frontón en las tapias del cuartel de la montaña",
+     "src": "media/fotos/25-a.jpg"
     }
    ],
    "lat": 40.424,
@@ -388,8 +383,8 @@
    "items": [
     {
      "type": "photo",
-     "src": "media/fotos/26-a.jpg",
-     "label": "El estanque del retiroaguardando los decorados de \"el fabuloso mundo del circo\""
+     "label": "El estanque del retiroaguardando los decorados de \"el fabuloso mundo del circo\"",
+     "src": "media/fotos/26-a.jpg"
     }
    ],
    "lat": 40.4181,
@@ -404,14 +399,941 @@
    "items": [
     {
      "type": "photo",
-     "src": "media/fotos/27-a.jpg",
-     "label": "La puerta del sol un domingo veraniego"
+     "label": "La puerta del sol un domingo veraniego",
+     "src": "media/fotos/27-a.jpg"
     }
    ],
    "lat": 40.4169,
    "lon": -3.7035,
    "loc": "estimate",
    "r": 80
+  },
+  {
+   "id": "c29",
+   "n": 29,
+   "title": "Ermita de san isidro",
+   "items": [
+    {
+     "type": "photo",
+     "label": "Así se veía la Pradera, desde la Ermita de San Isidro, al fondo el Puente de Toledo, año 1906. El Río Manzanares, aun discurría libre sin ningún tipo de canalización.",
+     "src": "media/fotos/29-a.jpg",
+     "year": "1906",
+     "credit": "Facebook"
+    }
+   ],
+   "date": "1906",
+   "lat": 40.40065,
+   "lon": -3.72585,
+   "loc": "estimate",
+   "r": 100
+  },
+  {
+   "id": "c30",
+   "n": 30,
+   "title": "Plaza de Quintana",
+   "items": [
+    {
+     "type": "versions",
+     "photos": [
+      {
+       "label": "Plaza de Quintana",
+       "src": "media/fotos/30-a.jpg",
+       "credit": "Leo del Val | Canillejas Imágenes de un pueblo",
+       "v": "a"
+      },
+      {
+       "label": "Plaza de Quintana",
+       "src": "media/fotos/30-b.jpg",
+       "credit": "Fuente propia",
+       "v": "b"
+      }
+     ]
+    }
+   ],
+   "lat": 40.4335,
+   "lon": -3.64733,
+   "loc": "estimate",
+   "r": 100
+  },
+  {
+   "id": "c31",
+   "n": 31,
+   "title": "Parque de las Avenidas, Fuente del Berro",
+   "items": [
+    {
+     "type": "audio",
+     "label": "Audio Cambio Parque de las Avenidas - M-30",
+     "src": "media/audio/31-a.m4a",
+     "year": "2026",
+     "credit": "Fuente propia",
+     "link": "https://drive.google.com/file/d/1gry-DLnICuSb7cum8nzVH1f3XHDSB_Se/view?usp=drive_link"
+    }
+   ],
+   "date": "2026",
+   "lat": 40.433,
+   "lon": -3.662,
+   "loc": "estimate",
+   "r": 900
+  },
+  {
+   "id": "c33",
+   "n": 33,
+   "title": "Puente de Segovia",
+   "items": [
+    {
+     "type": "photo",
+     "label": "Puente de Segovia",
+     "src": "media/fotos/33-a.jpg",
+     "year": "1934",
+     "credit": "Servicio Fotográfico Municipal · Museo de Historia de Madrid, Inv. 8868 · memoriademadrid.es · CC BY-NC 4.0",
+     "link": "https://www.memoriademadrid.es/view/387365/puente-de-segovia?offset=14&limit=50&q=filter,parents,equals,422284"
+    }
+   ],
+   "date": "1934",
+   "lat": 40.41417,
+   "lon": -3.72289,
+   "loc": "estimate",
+   "r": 100
+  },
+  {
+   "id": "c35",
+   "n": 35,
+   "title": "Plaza de Olavide",
+   "items": [
+    {
+     "type": "photo",
+     "label": "Plaza de Olavide: Noviembre de 1913. Asfaltado de la Plaza de Olavide",
+     "src": "media/fotos/35-a.jpg",
+     "year": "1913",
+     "credit": "Servicio Fotográfico Municipal · Museo de Historia de Madrid, Inv. 9632 · memoriademadrid.es · CC BY 4.0",
+     "link": "https://www.memoriademadrid.es/view/395937/plaza-de-olavide?offset=28&limit=50&q=filter,parents,equals,422284"
+    }
+   ],
+   "date": "1913",
+   "lat": 40.43277,
+   "lon": -3.70105,
+   "loc": "estimate",
+   "r": 80
+  },
+  {
+   "id": "c36",
+   "n": 36,
+   "title": "Calle de Bailén",
+   "items": [
+    {
+     "type": "photo",
+     "label": "Calle de Bailén: 9 Octubre de 1913 Vista del ángulo de las calles Bailén y Almudena después de construido el jardín",
+     "src": "media/fotos/36-a.jpg",
+     "year": "1913",
+     "credit": "Servicio Fotográfico Municipal · Museo de Historia de Madrid, Inv. 9599 · memoriademadrid.es · CC BY 4.0",
+     "link": "https://www.memoriademadrid.es/view/395805/calle-de-bailen?offset=31&limit=50&q=filter,parents,equals,422284"
+    }
+   ],
+   "date": "1913",
+   "lat": 40.4153,
+   "lon": -3.7136,
+   "loc": "estimate",
+   "r": 80
+  },
+  {
+   "id": "c37",
+   "n": 37,
+   "title": "Paseo de Santa María de la Cabeza",
+   "items": [
+    {
+     "type": "photo",
+     "label": "Paseo de Santa María de la Cabeza: 18 Agosto 1913 Paseo de Sta. María de la Cabeza Obra de empedrado de cuña entre encintados longitudinalesy transversales",
+     "src": "media/fotos/37-a.jpg",
+     "year": "1913",
+     "credit": "Servicio Fotográfico Municipal · Museo de Historia de Madrid, Inv. 9613 · memoriademadrid.es · CC BY 4.0",
+     "link": "https://www.memoriademadrid.es/view/395843/paseo-de-santa-maria-de-la-cabeza?offset=33&limit=50&q=filter,parents,equals,422284"
+    }
+   ],
+   "date": "1913",
+   "lat": 40.3995,
+   "lon": -3.7,
+   "loc": "estimate",
+   "r": 1300
+  },
+  {
+   "id": "c38",
+   "n": 38,
+   "title": "Puente en la Casa de Campo",
+   "items": [
+    {
+     "type": "photo",
+     "label": "Puente en la Casa de Campo",
+     "src": "media/fotos/38-a.jpg",
+     "year": "ca. 1925",
+     "credit": "Servicio Fotográfico Municipal · Hemeroteca Municipal de Madrid, GF-220 · memoriademadrid.es · CC BY 4.0",
+     "link": "https://www.memoriademadrid.es/view/672366/puente-en-la-casa-de-campo?offset=39&limit=50&q=filter,parents,equals,422284"
+    }
+   ],
+   "date": "ca. 1925",
+   "lat": 40.419,
+   "lon": -3.75,
+   "loc": "estimate",
+   "r": 2500
+  },
+  {
+   "id": "c39",
+   "n": 39,
+   "title": "Puente de Húmera en la Casa de Campo",
+   "items": [
+    {
+     "type": "photo",
+     "label": "Puente de Húmera en la Casa de Campo. Conocido también como del Álamo Negro, por haber un gran álamo en las cercanías. Desapareció al hacer una pasarela de acceso al Zoo en 1972.",
+     "src": "media/fotos/39-a.jpg",
+     "year": "ca. 1932",
+     "credit": "José CORRAL · Hemeroteca Municipal de Madrid, HEM_0561 · memoriademadrid.es · CC BY 4.0",
+     "link": "https://www.memoriademadrid.es/view/411285/puente-de-humera-en-la-casa-de-campo?offset=69&limit=50&q=filter,parents,equals,422284"
+    }
+   ],
+   "date": "ca. 1932",
+   "lat": 40.40953,
+   "lon": -3.76094,
+   "loc": "estimate",
+   "r": 60
+  },
+  {
+   "id": "c40",
+   "n": 40,
+   "title": "Obras en la Glorieta de San Vicente",
+   "items": [
+    {
+     "type": "photo",
+     "label": "Obras en la Glorieta de San Vicente",
+     "src": "media/fotos/40-a.jpg",
+     "year": "ca. 1933",
+     "credit": "Servicio Fotográfico Municipal · Museo de Historia de Madrid, Inv. 8398 · memoriademadrid.es · CC BY-NC 4.0",
+     "link": "https://www.memoriademadrid.es/view/387599/obras-en-la-glorieta-de-san-vicente?offset=88&limit=50&q=filter,parents,equals,422284"
+    }
+   ],
+   "date": "ca. 1933",
+   "lat": 40.4202,
+   "lon": -3.7204,
+   "loc": "estimate",
+   "r": 100
+  },
+  {
+   "id": "c41",
+   "n": 41,
+   "title": "Puente de los Franceses",
+   "items": [
+    {
+     "type": "photo",
+     "label": "Puente de los Franceses",
+     "src": "media/fotos/41-a.jpg",
+     "year": "ca. 1930",
+     "credit": "Servicio Fotográfico Municipal · Museo de Historia de Madrid, Inv. 8387 · memoriademadrid.es · CC BY 4.0",
+     "link": "https://www.memoriademadrid.es/view/395681/puente-de-los-franceses?offset=127&limit=50&q=filter,parents,equals,422284"
+    }
+   ],
+   "date": "ca. 1930",
+   "lat": 40.43367,
+   "lon": -3.73594,
+   "loc": "estimate",
+   "r": 80
+  },
+  {
+   "id": "c42",
+   "n": 42,
+   "title": "Paseo de las Delicias",
+   "items": [
+    {
+     "type": "photo",
+     "label": "Paseo de las Delicias",
+     "src": "media/fotos/42-a.jpg",
+     "year": "1913",
+     "credit": "Servicio Fotográfico Municipal · Museo de Historia de Madrid, Inv. 9264 · memoriademadrid.es · CC BY 4.0",
+     "link": "https://www.memoriademadrid.es/view/395769/paseo-de-las-delicias?offset=134&limit=50&q=filter,parents,equals,422284"
+    }
+   ],
+   "date": "1913",
+   "lat": 40.3985,
+   "lon": -3.6935,
+   "loc": "estimate",
+   "r": 900
+  },
+  {
+   "id": "c43",
+   "n": 43,
+   "title": "Matadero Municipal de la Arganzuela: Ferrocarril para el transporte de ganado",
+   "items": [
+    {
+     "type": "photo",
+     "label": "Matadero Municipal de la Arganzuela: Ferrocarril para el transporte de ganado",
+     "src": "media/fotos/43-a.jpg",
+     "year": "ca. 1920",
+     "credit": "Servicio Fotográfico Municipal · Museo de Historia de Madrid, Inv. 9103 · memoriademadrid.es · CC BY 4.0",
+     "link": "https://www.memoriademadrid.es/view/395735/matadero-municipal-de-la-arganzuela-ferrocarril-para-el-transporte-de-ganado?offset=182&limit=50&q=filter,parents,equals,422284"
+    }
+   ],
+   "date": "ca. 1920",
+   "lat": 40.39188,
+   "lon": -3.6985,
+   "loc": "estimate",
+   "r": 300
+  },
+  {
+   "id": "c44",
+   "n": 44,
+   "title": "Asilo de Nuestra Señora de la Paloma",
+   "items": [
+    {
+     "type": "photo",
+     "label": "Asilo de Nuestra Señora de la Paloma",
+     "src": "media/fotos/44-a.jpg",
+     "year": "ca. 1930",
+     "credit": "Servicio Fotográfico Municipal · Museo de Historia de Madrid, Inv. 8343 · memoriademadrid.es · CC BY 4.0",
+     "link": "https://www.memoriademadrid.es/view/395573/asilo-de-nuestra-senora-de-la-paloma?offset=185&limit=50&q=filter,parents,equals,422284"
+    }
+   ],
+   "date": "ca. 1930",
+   "lat": 40.45931,
+   "lon": -3.71747,
+   "loc": "estimate",
+   "r": 200
+  },
+  {
+   "id": "c45",
+   "n": 45,
+   "title": "Vistas generales de una finca localizada en la zona de la Casa de Campo",
+   "items": [
+    {
+     "type": "photo",
+     "label": "Vistas generales de una finca localizada en la zona de la Casa de Campo",
+     "src": "media/fotos/45-a.jpg",
+     "year": "ca. 1925",
+     "credit": "Servicio Fotográfico Municipal · Hemeroteca Municipal de Madrid, GF-265 · memoriademadrid.es · CC BY 4.0",
+     "link": "https://www.memoriademadrid.es/view/672380/vistas-generales-de-una-finca-localizada-en-la-zona-de-la-casa-de-campo-ca-1925?offset=218&limit=50&q=filter,parents,equals,422284"
+    }
+   ],
+   "date": "ca. 1925",
+   "lat": 40.419,
+   "lon": -3.75,
+   "loc": "estimate",
+   "r": 2500
+  },
+  {
+   "id": "c46",
+   "n": 46,
+   "title": "Puente de Segovia",
+   "items": [
+    {
+     "type": "photo",
+     "label": "Puente de Segovia",
+     "src": "media/fotos/46-a.jpg",
+     "year": "ca. 1925",
+     "credit": "Servicio Fotográfico Municipal · Hemeroteca Municipal de Madrid, GF-359 · memoriademadrid.es · CC BY 4.0",
+     "link": "https://www.memoriademadrid.es/view/672636/puente-de-segovia-ca-1925?offset=223&limit=50&q=filter,parents,equals,422284"
+    }
+   ],
+   "date": "ca. 1925",
+   "lat": 40.41417,
+   "lon": -3.72289,
+   "loc": "estimate",
+   "r": 100
+  },
+  {
+   "id": "c47",
+   "n": 47,
+   "title": "Esclusa en el río Manzanares",
+   "items": [
+    {
+     "type": "photo",
+     "label": "Esclusa en el río Manzanares",
+     "src": "media/fotos/47-a.jpg",
+     "year": "ca. 1925",
+     "credit": "Servicio Fotográfico Municipal · Hemeroteca Municipal de Madrid, GF-314 · memoriademadrid.es · CC BY 4.0",
+     "link": "https://www.memoriademadrid.es/view/672632/esclusa-en-el-rio-manzanares-ca-1925?offset=224&limit=50&q=filter,parents,equals,422284"
+    }
+   ],
+   "date": "ca. 1925",
+   "lat": 40.412,
+   "lon": -3.72,
+   "loc": "estimate",
+   "r": 2500
+  },
+  {
+   "id": "c48",
+   "n": 48,
+   "title": "Puerta de la Venta en la Casa de Campo",
+   "items": [
+    {
+     "type": "photo",
+     "label": "Puerta de la Venta en la Casa de Campo. Desaparecida con la ampliación de la carretera de Extremadura en 1968, debe su nombre a la Venta de Alcorcón.",
+     "src": "media/fotos/48-a.jpg",
+     "year": "ca. 1932",
+     "credit": "José CORRAL · Hemeroteca Municipal de Madrid, HEM_0224 · memoriademadrid.es · CC BY 4.0",
+     "link": "https://www.memoriademadrid.es/view/411257/puerta-de-la-venta-en-la-casa-de-campo?offset=271&limit=50&q=filter,parents,equals,422284"
+    }
+   ],
+   "date": "ca. 1932",
+   "lat": 40.4029,
+   "lon": -3.76076,
+   "loc": "estimate",
+   "r": 80
+  },
+  {
+   "id": "c49",
+   "n": 49,
+   "title": "Plaza de Santa Ana",
+   "items": [
+    {
+     "type": "photo",
+     "label": "Plaza de Santa Ana",
+     "src": "media/fotos/49-a.jpg",
+     "year": "ca. 1920",
+     "credit": "Servicio Fotográfico Municipal · Museo de Historia de Madrid, Inv. 9305 · memoriademadrid.es · CC BY 4.0",
+     "link": "https://www.memoriademadrid.es/view/395779/plaza-de-santa-ana?offset=285&limit=50&q=filter,parents,equals,422284"
+    }
+   ],
+   "date": "ca. 1920",
+   "lat": 40.41444,
+   "lon": -3.7012,
+   "loc": "estimate",
+   "r": 80
+  },
+  {
+   "id": "c50",
+   "n": 50,
+   "title": "Entrada al Campo del Moro",
+   "items": [
+    {
+     "type": "photo",
+     "label": "Entrada al Campo del Moro",
+     "src": "media/fotos/50-a.jpg",
+     "year": "1935",
+     "credit": "Servicio Fotográfico Municipal · Museo de Historia de Madrid, Inv. 8369 · memoriademadrid.es · CC BY-NC 4.0",
+     "link": "https://www.memoriademadrid.es/view/387581/entrada-al-campo-del-moro?offset=313&limit=50&q=filter,parents,equals,422284"
+    }
+   ],
+   "date": "1935",
+   "lat": 40.4182,
+   "lon": -3.72,
+   "loc": "estimate",
+   "r": 250
+  },
+  {
+   "id": "c51",
+   "n": 51,
+   "title": "Puente del Rey",
+   "items": [
+    {
+     "type": "photo",
+     "label": "Puente del Rey",
+     "src": "media/fotos/51-a.jpg",
+     "year": "ca. 1930",
+     "credit": "Servicio Fotográfico Municipal · Museo de Historia de Madrid, Inv. 8388 · memoriademadrid.es · CC BY-NC 4.0",
+     "link": "https://www.memoriademadrid.es/view/387591/puente-del-rey?offset=314&limit=50&q=filter,parents,equals,422284"
+    }
+   ],
+   "date": "ca. 1930",
+   "lat": 40.41883,
+   "lon": -3.72197,
+   "loc": "estimate",
+   "r": 80
+  },
+  {
+   "id": "c52",
+   "n": 52,
+   "title": "El hotel Ritz",
+   "items": [
+    {
+     "type": "photo",
+     "label": "El hotel Ritz",
+     "src": "media/fotos/52-a.jpg",
+     "year": "ca. 1930",
+     "credit": "Servicio Fotográfico Municipal · Museo de Historia de Madrid, Inv. 9323 · memoriademadrid.es · CC BY-NC 4.0",
+     "link": "https://www.memoriademadrid.es/view/496236/el-hotel-ritz?offset=320&limit=50&q=filter,parents,equals,422284"
+    }
+   ],
+   "date": "ca. 1930",
+   "lat": 40.4155,
+   "lon": -3.6935,
+   "loc": "estimate",
+   "r": 50
+  },
+  {
+   "id": "c53",
+   "n": 53,
+   "title": "Visita una granja avícola",
+   "items": [
+    {
+     "type": "photo",
+     "label": "Visita una granja avícola. Visita del Sr. Alcalde, Sr Semprúm a una granja agrícola en Carabanchel",
+     "src": "media/fotos/53-a.jpg",
+     "year": "ca. 1926",
+     "credit": "Servicio Fotográfico Municipal · Museo de Historia de Madrid, Inv. 9116 · memoriademadrid.es · CC BY-NC 4.0",
+     "link": "https://www.memoriademadrid.es/view/384355/visita-una-granja-avicola?offset=322&limit=50&q=filter,parents,equals,422284"
+    }
+   ],
+   "date": "ca. 1926",
+   "lat": 40.383,
+   "lon": -3.735,
+   "loc": "estimate",
+   "r": 2500
+  },
+  {
+   "id": "c54",
+   "n": 54,
+   "title": "Colmenas en la Casa de Campo",
+   "items": [
+    {
+     "type": "photo",
+     "label": "Colmenas en la Casa de Campo. La actividad apícola ha estado muy presente en la vida de la finca desde tiempos de Felipe II.",
+     "src": "media/fotos/54-a.jpg",
+     "year": "ca. 1932",
+     "credit": "José CORRAL · Hemeroteca Municipal de Madrid, HEM_0268 · memoriademadrid.es · CC BY 4.0",
+     "link": "https://www.memoriademadrid.es/view/411209/colmenas-en-la-casa-de-campo?offset=335&limit=50&q=filter,parents,equals,422284"
+    }
+   ],
+   "date": "ca. 1932",
+   "lat": 40.419,
+   "lon": -3.75,
+   "loc": "estimate",
+   "r": 2500
+  },
+  {
+   "id": "c55",
+   "n": 55,
+   "title": "Lavadero en el Manzanares",
+   "items": [
+    {
+     "type": "photo",
+     "label": "Lavadero en el Manzanares. Diferentes tramos del río Manzanares a su paso por la ciudad se vieron canalizados a lo largo del primer tercio del siglo XX. Signo indudable del empujón modernizador que Madrid hubo de experimentar por entonces, aquella operación acabó también con las riberas sinuosas del río, con su álveo arenoso y con la densa red de hilos de agua que, con no pocas dificultades en su discurso estival, rozaban las arboladas isletas que venían definiendo la fachada occidental de la urbe y, con ella, su más conocida imagen durante siglos. Combinada con la difusión del agua corriente en las viviendas, la canalización del Manzanares acabó también con los varios miles de lavanderas que lavaban los trapos sucios de los madrileños y, al tiempo, con la nebulosa de casillas, barracas, cordajes y ropa blanca tendida que, como aves de paso que se hubieran detenido a reposar un instante, se disponían a los pies del Palacio Real. A diferencia de ellas, las lavanderas se fueron para nunca más volver.",
+     "src": "media/fotos/55-a.jpg",
+     "year": "ca. 1933",
+     "credit": "Servicio Fotográfico Municipal · Museo de Historia de Madrid, Inv. 8397 · memoriademadrid.es · CC BY-NC 4.0",
+     "link": "https://www.memoriademadrid.es/view/384369/lavadero-en-el-manzanares?offset=304&limit=50&q=filter,parents,equals,422284"
+    }
+   ],
+   "date": "ca. 1933",
+   "lat": 40.41,
+   "lon": -3.72,
+   "loc": "estimate",
+   "r": 2000
+  },
+  {
+   "id": "c56",
+   "n": 56,
+   "title": "Plaza de Tirso de Molina",
+   "items": [
+    {
+     "type": "photo",
+     "label": "Plaza de Tirso de Molina",
+     "src": "media/fotos/56-a.jpg",
+     "year": "ca. 1920",
+     "credit": "Servicio Fotográfico Municipal · Museo de Historia de Madrid, Inv. 9288 · memoriademadrid.es · CC BY 4.0",
+     "link": "https://www.memoriademadrid.es/view/395775/plaza-de-tirso-de-molina?offset=399&limit=50&q=filter,parents,equals,422284"
+    }
+   ],
+   "date": "ca. 1920",
+   "lat": 40.41236,
+   "lon": -3.70474,
+   "loc": "estimate",
+   "r": 80
+  },
+  {
+   "id": "c57",
+   "n": 57,
+   "title": "Paseo del Prado",
+   "items": [
+    {
+     "type": "photo",
+     "label": "Paseo del Prado",
+     "src": "media/fotos/57-a.jpg",
+     "year": "ca. 1930",
+     "credit": "Servicio Fotográfico Municipal · Museo de Historia de Madrid, Inv. 9316 · memoriademadrid.es · CC BY 4.0",
+     "link": "https://www.memoriademadrid.es/view/395783/paseo-del-prado?offset=398&limit=50&q=filter,parents,equals,422284"
+    }
+   ],
+   "date": "ca. 1930",
+   "lat": 40.4136,
+   "lon": -3.693,
+   "loc": "estimate",
+   "r": 700
+  },
+  {
+   "id": "c58",
+   "n": 58,
+   "title": "Puerta del Río de la casa de Campo (Puerta del Rey) antes de las obras de ensanche",
+   "items": [
+    {
+     "type": "photo",
+     "label": "Puerta del Río de la casa de Campo (Puerta del Rey) antes de las obras de ensanche",
+     "src": "media/fotos/58-a.jpg",
+     "year": "ca. 1931",
+     "credit": "Servicio Fotográfico Municipal · Museo de Historia de Madrid, Inv. 9480 · memoriademadrid.es · CC BY-NC 4.0",
+     "link": "https://www.memoriademadrid.es/view/384441/puerta-del-rio-de-la-casa-de-campo-puerta-del-rey-antes-de-las-obras-de-ensanche?offset=384&limit=50&q=filter,parents,equals,422284"
+    }
+   ],
+   "date": "ca. 1931",
+   "lat": 40.4189,
+   "lon": -3.7229,
+   "loc": "estimate",
+   "r": 80
+  },
+  {
+   "id": "c59",
+   "n": 59,
+   "title": "Monumento a Calderón de la Barca en la plaza de Santa Ana",
+   "items": [
+    {
+     "type": "photo",
+     "label": "Monumento a Calderón de la Barca en la plaza de Santa Ana",
+     "src": "media/fotos/59-a.jpg",
+     "year": "ca. 1930",
+     "credit": "Servicio Fotográfico Municipal · Museo de Historia de Madrid, Inv. 9209 · memoriademadrid.es · CC BY 4.0",
+     "link": "https://www.memoriademadrid.es/view/395747/monumento-a-calderon-de-la-barca-en-la-plaza-de-santa-ana?offset=354&limit=50&q=filter,parents,equals,422284"
+    }
+   ],
+   "date": "ca. 1930",
+   "lat": 40.41444,
+   "lon": -3.7012,
+   "loc": "estimate",
+   "r": 70
+  },
+  {
+   "id": "c60",
+   "n": 60,
+   "title": "Fuente de la Fama en el Parque del Oeste",
+   "items": [
+    {
+     "type": "photo",
+     "label": "Fuente de la Fama en el Parque del Oeste. Se trata de una fuente de estilo churrigueresco, construida por Pedro de Ribera en el segundo tercio del siglo XVIII. Su enclave original se sitúa en la plaza de Antón Martín, razón por la cual fue conocida inicialmente como Fuente de Antón Martín. Después fue trasladada al Parque del Oeste y, en el año 1941, fue trasladada a su actual emplazamiento, junto a una de las fachadas del antiguo Hospicio de San Fernando, donde tiene su sede el Museo de Historia de Madrid.",
+     "src": "media/fotos/60-a.jpg",
+     "year": "ca. 1913",
+     "credit": "Servicio Fotográfico Municipal · Museo de Historia de Madrid, Inv. 9633 · memoriademadrid.es · CC BY 4.0",
+     "link": "https://www.memoriademadrid.es/view/395939/fuente-de-la-fama-en-el-parque-del-oeste?offset=413&limit=50&q=filter,parents,equals,422284"
+    }
+   ],
+   "date": "ca. 1913",
+   "lat": 40.42957,
+   "lon": -3.72416,
+   "loc": "estimate",
+   "r": 80
+  },
+  {
+   "id": "c61",
+   "n": 61,
+   "title": "Panorama de Madrid desde el cerro de San Isidro",
+   "items": [
+    {
+     "type": "photo",
+     "label": "Panorama de Madrid desde el cerro de San Isidro",
+     "src": "media/fotos/61-a.jpg",
+     "year": "ca. 1930",
+     "credit": "Servicio Fotográfico Municipal · Museo de Historia de Madrid, Inv. 8364 · memoriademadrid.es · CC BY 4.0",
+     "link": "https://www.memoriademadrid.es/view/395625/panorama-de-madrid-desde-el-cerro-de-san-isidro?offset=412&limit=50&q=filter,parents,equals,422284"
+    }
+   ],
+   "date": "ca. 1930",
+   "lat": 40.4,
+   "lon": -3.7265,
+   "loc": "estimate",
+   "r": 300
+  },
+  {
+   "id": "c62",
+   "n": 62,
+   "title": "Asilo de Nuestra Señora de la Paloma",
+   "items": [
+    {
+     "type": "photo",
+     "label": "Asilo de Nuestra Señora de la Paloma",
+     "src": "media/fotos/62-a.jpg",
+     "year": "ca. 1930",
+     "credit": "Servicio Fotográfico Municipal · Museo de Historia de Madrid, Inv. 8345 · memoriademadrid.es · CC BY 4.0",
+     "link": "https://www.memoriademadrid.es/view/395577/asilo-de-nuestra-senora-de-la-paloma?offset=411&limit=50&q=filter,parents,equals,422284"
+    }
+   ],
+   "date": "ca. 1930",
+   "lat": 40.45931,
+   "lon": -3.71747,
+   "loc": "estimate",
+   "r": 200
+  },
+  {
+   "id": "c63",
+   "n": 63,
+   "title": "Paseo de las Delicias",
+   "items": [
+    {
+     "type": "photo",
+     "label": "Paseo de las Delicias: Noviembre de 1913 Obra de afirmado en el pavimento del Paseo de las Delicias",
+     "src": "media/fotos/63-a.jpg",
+     "year": "1913",
+     "credit": "Servicio Fotográfico Municipal · Museo de Historia de Madrid, Inv. 9619 · memoriademadrid.es · CC BY 4.0",
+     "link": "https://www.memoriademadrid.es/view/395867/paseo-de-las-delicias?offset=406&limit=50&q=filter,parents,equals,422284"
+    }
+   ],
+   "date": "1913",
+   "lat": 40.3985,
+   "lon": -3.6935,
+   "loc": "estimate",
+   "r": 900
+  },
+  {
+   "id": "c64",
+   "n": 64,
+   "title": "Panorama de Madrid desde el cerro de San Isidro",
+   "items": [
+    {
+     "type": "photo",
+     "label": "Panorama de Madrid desde el cerro de San Isidro",
+     "src": "media/fotos/64-a.jpg",
+     "year": "ca. 1930",
+     "credit": "Servicio Fotográfico Municipal · Museo de Historia de Madrid, Inv. 9227 · memoriademadrid.es · CC BY 4.0",
+     "link": "https://www.memoriademadrid.es/view/395755/panorama-de-madrid-desde-el-cerro-de-san-isidro?offset=404&limit=50&q=filter,parents,equals,422284"
+    }
+   ],
+   "date": "ca. 1930",
+   "lat": 40.4,
+   "lon": -3.7265,
+   "loc": "estimate",
+   "r": 300
+  },
+  {
+   "id": "c65",
+   "n": 65,
+   "title": "Glorieta de San Vicente",
+   "items": [
+    {
+     "type": "photo",
+     "label": "Glorieta de San Vicente",
+     "src": "media/fotos/65-a.jpg",
+     "year": "1934",
+     "credit": "Servicio Fotográfico Municipal · Museo de Historia de Madrid, Inv. 8385 · memoriademadrid.es · CC BY 4.0",
+     "link": "https://www.memoriademadrid.es/view/395669/glorieta-de-san-vicente?offset=401&limit=50&q=filter,parents,equals,422284"
+    }
+   ],
+   "date": "1934",
+   "lat": 40.4202,
+   "lon": -3.7204,
+   "loc": "estimate",
+   "r": 100
+  },
+  {
+   "id": "c66",
+   "n": 66,
+   "title": "Finca de la Casa de Campo",
+   "items": [
+    {
+     "type": "photo",
+     "label": "Finca de la Casa de Campo",
+     "src": "media/fotos/66-a.jpg",
+     "year": "ca. 1925",
+     "credit": "Servicio Fotográfico Municipal · Hemeroteca Municipal de Madrid, GF-228 · memoriademadrid.es · CC BY 4.0",
+     "link": "https://www.memoriademadrid.es/view/672314/finca-de-la-casa-de-campo?offset=499&limit=50&q=filter,parents,equals,422284"
+    }
+   ],
+   "date": "ca. 1925",
+   "lat": 40.419,
+   "lon": -3.75,
+   "loc": "estimate",
+   "r": 2500
+  },
+  {
+   "id": "c67",
+   "n": 67,
+   "title": "Puente ferroviario",
+   "items": [
+    {
+     "type": "photo",
+     "label": "Puente ferroviario",
+     "src": "media/fotos/67-a.jpg",
+     "year": "ca. 1925",
+     "credit": "Servicio Fotográfico Municipal · Hemeroteca Municipal de Madrid, GF-314 · memoriademadrid.es · CC BY 4.0",
+     "link": "https://www.memoriademadrid.es/view/672634/puente-ferroviario-ca-1925?offset=490&limit=50&q=filter,parents,equals,422284"
+    }
+   ],
+   "date": "ca. 1925",
+   "lat": 40.43367,
+   "lon": -3.73594,
+   "loc": "estimate",
+   "r": 1500
+  },
+  {
+   "id": "c68",
+   "n": 68,
+   "title": "Patio del jardín de las Caballerizas Reales",
+   "items": [
+    {
+     "type": "photo",
+     "label": "Patio del jardín de las Caballerizas Reales. El Museo de Historia conserva una serie de fotografías ingresadas por la Hemeroteca Municipal que ilustran los últimos momentos de las Caballerizas Reales, un complejo de edificios situado al lado del Palacio Real que fue demolido en los primeros años 30 para dar paso a los Jardines de Sabatini. Fueron encargadas a Francisco Sabatini por Carlos III. Se dice que estaban construidas en piedra berroqueña, escuelas, patios interiores con fuentes de agua potable y una capilla dedicada a San Antonio Abad. Se les supone una capacidad para 179 carruajes y 500 caballerías. Con la llegada de la 2ª República, el Gobierno ordenó la incautación de diferentes bienes pertenecientes a la Familia Real, entre ellos las Caballerizas Reales, cediendo este espacio al Ayuntamiento de Madrid con el fin de levantar los Jardines de Sabatini para uso y disfrute de todos los madrileños.",
+     "src": "media/fotos/68-a.jpg",
+     "year": "1932",
+     "credit": "Servicio Fotográfico Municipal · Museo de Historia de Madrid, Inv. 8833 · memoriademadrid.es · CC BY 4.0",
+     "link": "https://www.memoriademadrid.es/view/398059/patio-del-jardin-de-las-caballerizas-reales?offset=483&limit=50&q=filter,parents,equals,422284"
+    }
+   ],
+   "date": "1932",
+   "lat": 40.42021,
+   "lon": -3.71394,
+   "loc": "estimate",
+   "r": 100
+  },
+  {
+   "id": "c69",
+   "n": 69,
+   "title": "Patio del jardín de las Caballerizas Reales",
+   "items": [
+    {
+     "type": "photo",
+     "label": "Patio del jardín de las Caballerizas Reales. El Museo de Historia conserva una serie de fotografías ingresadas por la Hemeroteca Municipal que ilustran los últimos momentos de las Caballerizas Reales, un complejo de edificios situado al lado del Palacio Real que fue demolido en los primeros años 30 para dar paso a los Jardines de Sabatini. Fueron encargadas a Francisco Sabatini por Carlos III. Se dice que estaban construidas en piedra berroqueña, escuelas, patios interiores con fuentes de agua potable y una capilla dedicada a San Antonio Abad. Se les supone una capacidad para 179 carruajes y 500 caballerías. Con la llegada de la 2ª República, el Gobierno ordenó la incautación de diferentes bienes pertenecientes a la Familia Real, entre ellos las Caballerizas Reales, cediendo este espacio al Ayuntamiento de Madrid con el fin de levantar los Jardines de Sabatini para uso y disfrute de todos los madrileños.",
+     "src": "media/fotos/69-a.jpg",
+     "year": "1932",
+     "credit": "Servicio Fotográfico Municipal · Museo de Historia de Madrid, Inv. 8832 · memoriademadrid.es · CC BY 4.0",
+     "link": "https://www.memoriademadrid.es/view/507060/patio-del-jardin-de-las-caballerizas-reales?offset=482&limit=50&q=filter,parents,equals,422284"
+    }
+   ],
+   "date": "1932",
+   "lat": 40.42021,
+   "lon": -3.71394,
+   "loc": "estimate",
+   "r": 100
+  },
+  {
+   "id": "c70",
+   "n": 70,
+   "title": "Puente de Toledo",
+   "items": [
+    {
+     "type": "photo",
+     "label": "Puente de Toledo",
+     "src": "media/fotos/70-a.jpg",
+     "year": "ca. 1930",
+     "credit": "Servicio Fotográfico Municipal · Museo de Historia de Madrid, Inv. 8927 · memoriademadrid.es · CC BY-NC 4.0",
+     "link": "https://www.memoriademadrid.es/view/387453/puente-de-toledo?offset=465&limit=50&q=filter,parents,equals,422284"
+    }
+   ],
+   "date": "ca. 1930",
+   "lat": 40.39968,
+   "lon": -3.71494,
+   "loc": "estimate",
+   "r": 100
+  },
+  {
+   "id": "c71",
+   "n": 71,
+   "title": "Puente de Toledo",
+   "items": [
+    {
+     "type": "photo",
+     "label": "Puente de Toledo",
+     "src": "media/fotos/71-a.jpg",
+     "year": "ca. 1930",
+     "credit": "Servicio Fotográfico Municipal · Museo de Historia de Madrid, Inv. 8926 · memoriademadrid.es · CC BY-NC 4.0",
+     "link": "https://www.memoriademadrid.es/view/387451/puente-de-toledo?offset=540&limit=50&q=filter,parents,equals,422284"
+    }
+   ],
+   "date": "ca. 1930",
+   "lat": 40.39968,
+   "lon": -3.71494,
+   "loc": "estimate",
+   "r": 100
+  },
+  {
+   "id": "c72",
+   "n": 72,
+   "title": "Escuela Municipal de cerámica",
+   "items": [
+    {
+     "type": "photo",
+     "label": "Escuela Municipal de cerámica",
+     "src": "media/fotos/72-a.jpg",
+     "year": "ca. 1932",
+     "credit": "Servicio Fotográfico Municipal · Museo de Historia de Madrid, Inv. 9050 · memoriademadrid.es · CC BY-NC 4.0",
+     "link": "https://www.memoriademadrid.es/view/384445/escuela-municipal-de-ceramica?offset=529&limit=50&q=filter,parents,equals,422284"
+    }
+   ],
+   "date": "ca. 1932",
+   "lat": 40.4279,
+   "lon": -3.7247,
+   "loc": "estimate",
+   "r": 150
+  },
+  {
+   "id": "c73",
+   "n": 73,
+   "title": "Escalerilla del Lozoya en la Casa de Campo",
+   "items": [
+    {
+     "type": "photo",
+     "label": "Escalerilla del Lozoya en la Casa de Campo. Esta escalerilla o escalones comunicaban el agua procedente del Canal de Isabel II con la acequia del Meaques, amortiguando el caudal en su descenso de nivel desde los Cerros de las Olivas (norte) al Pinar de las Siete Hermanas (sur).",
+     "src": "media/fotos/73-a.jpg",
+     "year": "ca. 1932",
+     "credit": "José CORRAL · Hemeroteca Municipal de Madrid, HEM_0557 · memoriademadrid.es · CC BY 4.0",
+     "link": "https://www.memoriademadrid.es/view/411163/escalerilla-del-lozoya-en-la-casa-de-campo?offset=515&limit=50&q=filter,parents,equals,422284"
+    }
+   ],
+   "date": "ca. 1932",
+   "lat": 40.4157,
+   "lon": -3.7462,
+   "loc": "estimate",
+   "r": 200
+  },
+  {
+   "id": "c74",
+   "n": 74,
+   "title": "Plaza Mayor",
+   "items": [
+    {
+     "type": "photo",
+     "label": "Plaza Mayor",
+     "src": "media/fotos/74-a.jpg",
+     "year": "ca. 1930",
+     "credit": "Servicio Fotográfico Municipal · Museo de Historia de Madrid, Inv. 8920 · memoriademadrid.es · CC BY 4.0",
+     "link": "https://www.memoriademadrid.es/view/394321/plaza-mayor?offset=512&limit=50&q=filter,parents,equals,422284"
+    }
+   ],
+   "date": "ca. 1930",
+   "lat": 40.41552,
+   "lon": -3.70742,
+   "loc": "estimate",
+   "r": 80
+  },
+  {
+   "id": "c75",
+   "n": 75,
+   "title": "Acueducto de Valdeza en la Casa de Campo",
+   "items": [
+    {
+     "type": "photo",
+     "label": "Acueducto de Valdeza en la Casa de Campo. También llamado Puente Colorado por el color de su ladrillo, es el más grande de la Casa de Campo y cruza el Arroyo de Valdeza. Construido en el último tercio del siglo XIX sobre proyecto del arquitecto José Pérez Sanjuán.",
+     "src": "media/fotos/75-a.jpg",
+     "year": "ca. 1932",
+     "credit": "José CORRAL · Hemeroteca Municipal de Madrid, HEM_9466 · memoriademadrid.es · CC BY 4.0",
+     "link": "https://www.memoriademadrid.es/view/411253/acueducto-de-valdeza-en-la-casa-de-campo?offset=588&limit=50&q=filter,parents,equals,422284"
+    }
+   ],
+   "date": "ca. 1932",
+   "lat": 40.42908,
+   "lon": -3.74936,
+   "loc": "estimate",
+   "r": 50
+  },
+  {
+   "id": "c76",
+   "n": 76,
+   "title": "Fuente de Covatillas en la Casa de Campo",
+   "items": [
+    {
+     "type": "photo",
+     "label": "Fuente de Covatillas en la Casa de Campo. Fotografía realizada por el Servicio Fotográfico Municipal.",
+     "src": "media/fotos/76-a.jpg",
+     "year": "ca. 1932",
+     "credit": "Servicio Fotográfico Municipal · Hemeroteca Municipal de Madrid, HEM_0774 · memoriademadrid.es · CC BY 4.0",
+     "link": "https://www.memoriademadrid.es/view/411211/fuente-de-covatillas-en-la-casa-de-campo?offset=569&limit=50&q=filter,parents,equals,422284"
+    }
+   ],
+   "date": "ca. 1932",
+   "lat": 40.43264,
+   "lon": -3.74803,
+   "loc": "estimate",
+   "r": 50
   }
  ]
 }

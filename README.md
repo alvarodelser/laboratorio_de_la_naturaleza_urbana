@@ -7,19 +7,20 @@ current orthophotos, and an archive of geolocated cases (photos, before/after pa
 
 ```
 db/                          the archive database: edit this
-  archivo_fotografias.xlsx   one row per photo; rows sharing an Identificador form a case
+  archivo_fotografias.xlsx   one row per photo, audio or text; rows sharing an Identificador form a case
   fotografias/               the photos, named <Identificador>-<versión>.jpg (or <Identificador>.jpg)
   fotografias/sin_catalogar/ photos not in the spreadsheet yet
-  audios/                    audio recordings (not on the map yet)
+  audios/                    audio recordings, named like the photos (<Identificador>-<versión>.<ext>)
+  textos/                    texts (.txt), named like the photos
   coordenadas_metadatos.csv  coordinates read from the photos' GPS (scripts/build_archive.py --extract-gps)
   coordenadas_aproximadas.csv  estimated coordinates (with an uncertainty radius) for cases without a better one
   fuentes.xlsx               research links: archives and collections to look through
 web/                   the site (static, no build step): index.html, app.js, app.css
   data/                map data: buildings.json, trees.json, osm.json, places.json, cases.json (generated from db/)
-  media/               web copies of the photos (generated from db/fotografias)
+  media/               web copies of the photos and audios (generated from db/)
   tiles/1956/          1956 orthophoto tile pyramid
 scripts/               data pipeline (Python) and the proposal review tools
-api/proponer.js        Vercel Function behind the map's "Añadir al archivo" form
+api/proponer.js        Vercel Function behind the map's "Contribuir al archivo" form
 palettes/              palette lab: the same map crop drawn in candidate palettes
 ```
 
@@ -64,8 +65,10 @@ Web copies of the photos are scaled to 2000 px and stripped of metadata, includi
 
 ## Proposals from visitors
 
-The map's **Añadir al archivo** button lets anyone mark a place, describe it and attach up to four photos. The photos
-are shrunk in the browser and sent to `api/proponer.js`, which queues them in a **private** Vercel Blob store under
+The map's **Contribuir al archivo** button lets anyone mark a place and bring one of three things: up to four photos
+(with a description), an audio (recorded in the page or picked from a file, up to 40 MB) or a text. Photos are shrunk
+in the browser; an audio is sent first in 2.5 MB pieces to `api/proponer-parte.js` (a function takes at most 4.5 MB
+per request) and joined again on import. The proposal itself goes to `api/proponer.js`, which queues it in a **private** Vercel Blob store under
 `propuestas/<id>/` (nothing reachable from the web; no contact details are collected). Nothing reaches the map until
 the team adds it:
 
@@ -77,6 +80,7 @@ node --env-file=.env.local scripts/propuestas.mjs importar <id>      # download 
 .venv/bin/python scripts/importar_propuesta.py db/propuestas/<id>    # next Identificador, rows, photos (--dry-run to preview)
 .venv/bin/python scripts/build_archive.py                            # check it, then commit and push
 node --env-file=.env.local scripts/propuestas.mjs borrar <id>        # remove it from the queue (also to reject)
+node --env-file=.env.local scripts/propuestas.mjs limpiar            # now and then: audio pieces whose proposal never came
 ```
 
 One-time setup: `npx vercel blob create-store lnu-propuestas --access private`, connected to the project.

@@ -1,9 +1,10 @@
-"""The archive database: db/archivo_fotografias.xlsx + db/fotografias/ -> web/data/cases.json + web/media/.
+"""The archive database: db/archivo_fotografias.xlsx + db/{fotografias,audios,textos}/ -> web/data/cases.json + web/media/.
 
-The spreadsheet is the source of truth; db/fotografias holds the photos it describes. This script validates
-both and writes what the map reads:
-  web/data/cases.json      the cases that have a coordinate inside the map frame, with their photos
+The spreadsheet is the source of truth; db/fotografias, db/audios and db/textos hold the files it describes. This
+script validates them and writes what the map reads:
+  web/data/cases.json      the cases that have a coordinate inside the map frame, with their photos, audios and texts
   web/media/fotos/         those photos as web JPEGs: at most MAX_PX on the longest side, metadata (GPS) removed
+  web/media/audio/         those audios as AAC (.m4a, plays in every browser), metadata removed; needs ffmpeg
 
 usage: python scripts/build_archive.py                  validate and build
        python scripts/build_archive.py --check          validate only
@@ -22,8 +23,12 @@ its photos apart. Rows without Identificador (e.g. research links in "Enlaces we
   Coordenada      "lat, lon" in decimal degrees, as Google Maps copies it (40.43436, -3.63828).
                   One row of the case is enough. Optional column "Radio (m)": uncertainty radius
   Enlaces         link to the original (Drive)
+  Enlaces web     the photo's page in an online archive (memoriademadrid.es...): the link when Enlaces is empty
 Photos: db/fotografias/<Identificador>-<versión>.<ext>, or <Identificador>.<ext> for a single version;
 anything after that is ignored (2-Parque-Marques-de-Suanzes.jpg is case 2, version a).
+Audios and texts are named the same way, in db/audios (any common audio format) and db/textos (.txt, UTF-8): a row
+is a photo, an audio or a text depending on which file has its number and version. Its Nombre imagen is the label.
+The photos of a case are linked as versions of one view; its audios and texts are separate items.
 
 Coordinates from photo metadata (--extract-gps): the GPS of each photo in db/fotografias is read, kept in
 db/coordenadas_metadatos.csv, and then removed from the photo (losslessly) so nobody's location is published.
@@ -42,6 +47,7 @@ import os
 import re
 import shutil
 import struct
+import subprocess
 import sys
 import unicodedata
 
@@ -61,6 +67,10 @@ OUT_JSON = os.path.join(ROOT, 'web', 'data', 'cases.json')
 OUT_MEDIA = os.path.join(ROOT, 'web', 'media')
 MAX_PX = 2000
 IMAGE_EXT = {'.jpg', '.jpeg', '.png', '.webp', '.tif', '.tiff'}
+AUDIOS = os.path.join(ROOT, 'db', 'audios')
+TEXTS = os.path.join(ROOT, 'db', 'textos')
+AUDIO_EXT = {'.opus', '.ogg', '.oga', '.webm', '.m4a', '.mp4', '.mp3', '.wav', '.aac', '.amr', '.3gp', '.caf', '.flac'}
+TEXT_EXT = {'.txt', '.md'}
 PHOTO_NAME = re.compile(r'^(\d+)(?:-([a-z]))?(?![a-z])', re.I)
 COORD = re.compile(r'^\s*(-?\d+(?:\.\d+)?)\s*[,;\s]\s*(-?\d+(?:\.\d+)?)\s*$')
 NOTE = ('Archive cases, built from db/archivo_fotografias.xlsx by scripts/build_archive.py: do not edit by hand. '
@@ -69,7 +79,8 @@ NOTE = ('Archive cases, built from db/archivo_fotografias.xlsx by scripts/build_
         'Items: versions {photos:[{src,label,year,credit,v}...]} (one photo in several versions), photo {src,label,year,credit}, '
         'text {body,label}, audio {src,label}, file {src,label}.')
 COLUMNS = {'id': 'identificador', 'version': 'version', 'year': 'ano', 'name': 'nombre imagen', 'source': 'archivo',
-           'place': 'localizacion', 'coord': 'coordenada', 'link': 'enlaces', 'radius': 'radio (m)'}
+           'place': 'localizacion', 'coord': 'coordenada', 'link': 'enlaces', 'web': 'enlaces web',
+           'radius': 'radio (m)'}
 REQUIRED = ('id', 'name')
 
 
@@ -118,26 +129,33 @@ def read_rows(rep):
         if text(rec['id']) == '':
             continue                                                   # link-only or blank row
         rec['_where'] = f'row {i}'
+        if not any(text(v) for k, v in rec.items() if k not in ('id', '_where')):
+            rep.warn(rec['_where'], f'Identificador {text(rec["id"])} has nothing else yet: skipped')   # a number reserved for later
+            continue
         out.append(rec)
     return out
 
 
-def index_photos(rep):
-    """{(case number, version): filename} for the photos directly in db/fotografias."""
-    found = {}
-    for f in sorted(os.listdir(PHOTOS)):
-        p = os.path.join(PHOTOS, f)
+def index_files(rep, folder, exts, example):
+    """{(case number, version): filename} for the files directly in a db/ folder."""
+    found, where = {}, os.path.relpath(folder, ROOT)
+    for f in sorted(os.listdir(folder)) if os.path.isdir(folder) else []:
+        p = os.path.join(folder, f)
         if f.startswith('.') or not os.path.isfile(p):
             continue
         m = PHOTO_NAME.match(f)
-        if not m or os.path.splitext(f)[1].lower() not in IMAGE_EXT:
-            rep.warn('db/fotografias', f'"{f}" is not named <Identificador>-<versión>.jpg: ignored')
+        if not m or os.path.splitext(f)[1].lower() not in exts:
+            rep.warn(where, f'"{f}" is not named <Identificador>-<versión>.{example}: ignored')
             continue
         key = (int(m.group(1)), (m.group(2) or 'a').lower())
         if key in found:
-            rep.error('db/fotografias', f'"{f}" and "{found[key]}" are both photo {key[0]}-{key[1]}')
+            rep.error(where, f'"{f}" and "{found[key]}" are both {key[0]}-{key[1]}')
         found[key] = f
     return found
+
+
+def index_photos(rep):
+    return index_files(rep, PHOTOS, IMAGE_EXT, 'jpg')
 
 
 def parse_coord(rec, rep):
@@ -160,6 +178,8 @@ def read_gps(path):
             g = im.getexif().get_ifd(0x8825)
         dms = lambda v: float(v[0]) + float(v[1]) / 60 + float(v[2]) / 3600
         lat, lon = dms(g[2]), dms(g[4])
+        if not (math.isfinite(lat) and math.isfinite(lon)) or (lat == 0 and lon == 0):
+            return None                                                 # an empty GPS tag (NaN or 0, 0)
         return (-lat if g.get(1) == 'S' else lat, -lon if g.get(3) == 'W' else lon)
     except Exception:
         return None
@@ -234,7 +254,8 @@ def extract_gps(photos):
           + (f'; discarded as a shared re-photographing spot: {", ".join(sorted(dropped))}' if dropped else ''))
 
 
-def build_cases(rows, photos, rep, gps=None, approx=None):
+def build_cases(rows, photos, rep, gps=None, approx=None, audios=None, texts=None):
+    audios, texts = audios or {}, texts or {}
     groups = {}
     for r in rows:
         try:
@@ -270,30 +291,46 @@ def build_cases(rows, photos, rep, gps=None, approx=None):
             name, year, source = text(r['name']), text(r.get('year')), text(r.get('source'))
             if not name:
                 rep.error(r['_where'], 'missing Nombre imagen')
-            f = photos.get((n, r['_v']))
-            if not f:
-                rep.warn(r['_where'], f'no photo {n}-{r["_v"]} in db/fotografias')
+            key = (n, r['_v'])
+            have = [(t, d[key]) for t, d in (('photo', photos), ('audio', audios), ('text', texts)) if key in d]
+            if not have:
+                rep.warn(r['_where'], f'no file {n}-{r["_v"]} in db/fotografias, db/audios or db/textos')
                 continue
-            used.add((n, r['_v']))
-            item = {'type': 'photo', 'src': f, '_v': r['_v'], 'label': tidy(name)}
+            if len(have) > 1:
+                rep.error(r['_where'], f'{n}-{r["_v"]} is in more than one folder: ' + ', '.join(f for _, f in have))
+                continue
+            used.add(key)
+            kind, f = have[0]
+            item = {'type': kind, '_v': r['_v'], 'label': tidy(name)}
+            if kind == 'text':
+                with open(os.path.join(TEXTS, f), encoding='utf-8') as fh:
+                    item['body'] = re.sub(r'\n{3,}', '\n\n', fh.read().replace('\r\n', '\n')).strip()
+                if not item['body']:
+                    rep.error(r['_where'], f'db/textos/{f} is empty')
+            else:
+                item['src'] = f
             if year:
                 item['year'] = year                                     # shown on the photo itself
             if source:
                 item['credit'] = source
-            if text(r.get('link')):
-                item['link'] = text(r['link'])
+            link = text(r.get('link')) or text(r.get('web'))         # the original: Drive, or the archive's own page
+            if link.startswith('http'):
+                item['link'] = link
             items.append(item)
         title = next((text(r.get('place')) for r in rs if text(r.get('place'))), '') or text(rs[0]['name'])
         title = tidy(title[:1].upper() + title[1:])
-        if len(items) > 1:                                              # the versions of one photo, linked
-            items = [{'type': 'versions', 'photos': [{k: x for k, x in it.items() if k != 'type'} | {'v': it['_v']}
-                                                     for it in items]}]
+        pics = [it for it in items if it['type'] == 'photo']
+        if len(pics) > 1:                                               # the versions of one photo, linked, where the first was
+            linked = {'type': 'versions', 'photos': [{k: x for k, x in it.items() if k != 'type'} | {'v': it['_v']} for it in pics]}
+            first = items.index(pics[0])
+            items = [it for it in items if it['type'] != 'photo']
+            items.insert(first, linked)
         years = list(dict.fromkeys(text(r.get('year')) for r in rs if text(r.get('year'))))
         case = {'id': f'c{n}', 'n': n, 'title': title, 'items': items, '_where': where}
         if years:
             case['date'] = ' / '.join(years)
         if not items:
-            rep.warn(where, 'has no photos yet: not on the map')
+            rep.warn(where, 'has no files yet: not on the map')
             continue
         if not coords:
             rep.warn(where, f'"{title}" has no Coordenada yet: not on the map')
@@ -312,8 +349,9 @@ def build_cases(rows, photos, rep, gps=None, approx=None):
         elif approx_r:
             case['r'] = approx_r
         cases.append(case)
-    for key in sorted(set(photos) - used):
-        rep.warn('db/fotografias', f'"{photos[key]}" has no row in the spreadsheet')
+    for folder, d in (('db/fotografias', photos), ('db/audios', audios), ('db/textos', texts)):
+        for key in sorted(set(d) - used):
+            rep.warn(folder, f'"{d[key]}" has no row in the spreadsheet')
     return cases
 
 
@@ -327,6 +365,16 @@ def export_photo(src_name, dst_rel):
         im.save(dst, 'JPEG', quality=85, optimize=True, progressive=True)
 
 
+def export_audio(src_name, dst_rel):
+    """A web copy: AAC in .m4a (Safari cannot play Opus or WebM everywhere), mono, metadata removed."""
+    dst = os.path.join(OUT_MEDIA, dst_rel)
+    os.makedirs(os.path.dirname(dst), exist_ok=True)
+    r = subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', os.path.join(AUDIOS, src_name), '-vn', '-map_metadata', '-1',
+                        '-ac', '1', '-c:a', 'aac', '-b:a', '96k', '-movflags', '+faststart', dst], capture_output=True, text=True)
+    if r.returncode:
+        sys.exit(f'ffmpeg could not convert db/audios/{src_name}: {r.stderr.strip()}')
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument('--check', action='store_true', help='validate only, write nothing')
@@ -336,9 +384,13 @@ def main():
     rep = Report()
     rows = read_rows(rep)
     photos = index_photos(rep)
+    audios = index_files(rep, AUDIOS, AUDIO_EXT, 'm4a')
+    texts = index_files(rep, TEXTS, TEXT_EXT, 'txt')
     if a.extract_gps and not a.check:
         extract_gps(photos)
-    cases = build_cases(rows, photos, rep, load_gps_csv(), load_approx_csv()) if not rep.errors else []
+    cases = build_cases(rows, photos, rep, load_gps_csv(), load_approx_csv(), audios, texts) if not rep.errors else []
+    if any(it['type'] == 'audio' for c in cases for it in c['items']) and not shutil.which('ffmpeg'):
+        rep.error('db/audios', 'converting audios needs ffmpeg (brew install ffmpeg)')
     for w in rep.warnings:
         print('warning:', w)
     for e in rep.errors:
@@ -358,6 +410,12 @@ def main():
                 rel = f'fotos/{c["n"]}-{ph.pop("_v")}.jpg'
                 export_photo(ph['src'], rel)
                 ph['src'] = 'media/' + rel
+            if it['type'] == 'audio':
+                rel = f'audio/{c["n"]}-{it.pop("_v")}.m4a'
+                export_audio(it['src'], rel)
+                it['src'] = 'media/' + rel
+            elif it['type'] == 'text':
+                it.pop('_v')
     os.makedirs(os.path.dirname(OUT_JSON), exist_ok=True)
     with open(OUT_JSON, 'w') as f:
         json.dump({'note': NOTE, 'cases': cases}, f, ensure_ascii=False, indent=1)
