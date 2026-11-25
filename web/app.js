@@ -141,6 +141,9 @@ function Sound({src,label,variant}){ // variant: 'dot' (play button only), 'mini
 /* canvas can't read light-dark() variables: resolve them through a probe element */
 const probe=document.createElement('i');probe.style.display='none';document.body.appendChild(probe);
 const col=n=>{probe.style.color=`var(${n})`;return getComputedStyle(probe).color};
+const safeTop=()=>{probe.style.paddingTop='env(safe-area-inset-top)';return parseFloat(getComputedStyle(probe).paddingTop)||0};
+// phones: a card's caption sits under it, whole: its height for a width W (11 px typewriter, ~6.6 px a letter, 1.35 line height)
+const labH=(t,W)=>Math.ceil(t.length*6.6*1.15/Math.max(40,W-12))*15+10;
 
 /* squares: every grid square (of the zoom's size) that holds at least one case. An approximate case is shown only while its
    uncertainty (2r) fits in a square: zoomed in further, the archive cannot say which square it belongs to, so it is left out. */
@@ -276,7 +279,9 @@ function MapView({D,layers,cases,onOpen,paused,pick,onPick,mark,fly,children}){
   const doPin=g=>{const P={key:'pin',x0:g.x0,y0:g.y0,size:g.size,ids:g.ids};setPin(P);setPage(0);setHover(null);setLit(null);setIntro(false);
     if(MOBILE){clearTimeout(sweep.current);setWipe(0);   // phones: today's orthophoto first, then 1956 sweeps across the square and stays
       sweep.current=setTimeout(()=>{setIntro(true);setWipe(1);sweep.current=setTimeout(()=>setIntro(false),650)},REDUCED?0:600)}
-    const b=box.current.getBoundingClientRect(),v=view.current;glide({tx:b.width/2-(g.x0+g.size/2)*v.s,ty:b.height/2+(g.y0+g.size/2)*v.s})};
+    // phones: the square rises to the top (under the back button and its name), so its file gets the whole screen below it
+    const b=box.current.getBoundingClientRect(),v=view.current,top=MOBILE?safeTop()+92:b.height/2-g.size*v.s/2;
+    glide({tx:b.width/2-(g.x0+g.size/2)*v.s,ty:top+(g.y0+g.size)*v.s})};
   const openTile=(T,id,item,from)=>onOpen({tile:{x0:T.x0,y0:T.y0,size:T.size,ids:T.ids},id:id||(T.ids.length===1?T.ids[0]:null),item:item==null?null:item,from:from||rect(T)});
   const openItem=(id,item,el)=>{const c=cases[id];if(!c)return;let T=pin&&pin.ids.includes(id)?pin:null;
     if(!T){const [i,j]=tileOf(D,G.B,c.x,c.y);T=tiles[i+','+j]}if(!T)return;
@@ -307,7 +312,8 @@ function MapView({D,layers,cases,onOpen,paused,pick,onPick,mark,fly,children}){
   useEffect(()=>{if(REDUCED)return;const iv=setInterval(()=>{if(!document.hidden&&!hold.current)retire()},ROTATE);return()=>clearInterval(iv)},[]);
   // the controls: cards keep clear of them (re-measured after each render, re-laid out if they moved)
   useLayoutEffect(()=>{const bb=box.current.getBoundingClientRect();
-    const a=[...box.current.querySelectorAll('.legend,.tools,.title')].map(el=>{const r=el.getBoundingClientRect();return {left:r.left-bb.left,top:r.top-bb.top,right:r.right-bb.left,bottom:r.bottom-bb.top}});
+    const a=[...document.querySelectorAll('.map .legend,.map .tools,.map .title,.map .pager,.map .mback,.propbtn')].map(el=>el.getBoundingClientRect()).filter(r=>r.width&&r.height)
+      .map(r=>({left:r.left-bb.left,top:r.top-bb.top,right:r.right-bb.left,bottom:r.bottom-bb.top}));
     const s=JSON.stringify(a.map(o=>[o.left,o.top,o.right,o.bottom].map(Math.round)));if(s!==avoid.current.s){avoid.current={s,a};setTick(t=>t+1)}});
   // keys while a square is pinned: ← → pages, Enter opens, Esc lets go
   useEffect(()=>{if(!pin||paused)return;const h=e=>{if(e.target.closest('input'))return;
@@ -335,11 +341,11 @@ function MapView({D,layers,cases,onOpen,paused,pick,onPick,mark,fly,children}){
     if(MOBILE){   // phones: one file at a time, as large as the free band above or below the square allows (swipe or the arrows for the next)
       pages=Math.max(1,all.length);pg=((page%pages)+pages)%pages;const [id,ii]=all[pg]||[];
       if(id!=null){const it=cases[id].items[ii],src=firstSrc(it),a=src?aspects.get(src)||1.33:it.type==='text'?1.5:it.type==='audio'?2.4:1.2;
-        const R=rect(pin),bot=R.top+R.height,gap=14,pgH=pages>1?54:0,av=base.avoid;
+        const R=rect(pin),bot=R.top+R.height,gap=14,av=base.avoid,cap=cases[id].title;   // the arrows sit at the screen's foot (in avoid)
         const topLim=Math.max(52,...av.filter(r=>r.bottom<=R.top).map(r=>r.bottom+8)),botLim=Math.min(base.bh-12,...av.filter(r=>r.top>=bot).map(r=>r.top-8));
-        const upH=R.top-gap-topLim,dnH=botLim-bot-gap-pgH,below=dnH>upH,Hm=Math.max(70,below?dnH:upH);
-        let W=Math.min(base.bw-24,Hm*a),H=W/a;if(H>Hm){H=Hm;W=H*a}
-        plot=[{key:'f'+id+'.'+ii,id,item:ii,left:(base.bw-W)/2,top:below?bot+gap+pgH:R.top-gap-H,W,H}]}}
+        const upH=R.top-gap-topLim,dnH=botLim-bot-gap,below=dnH>upH,room=Math.max(70,below?dnH:upH);
+        let W=base.bw-24,H;for(let k=0;k<2;k++){const Hm=Math.max(60,room-labH(cap,W));W=Math.min(base.bw-24,Hm*a);H=W/a;if(H>Hm){H=Hm;W=H*a}}
+        plot=[{key:'f'+id+'.'+ii,id,item:ii,left:(base.bw-W)/2,top:below?bot+gap:R.top-gap-H-labH(cap,W),W,H}]}}
     else{const P=[];for(let st=0;st<all.length&&P.length<40;){const o=run(st,99,true);P.push(o);st+=Math.max(1,o.length)}
       pages=Math.max(1,P.length);pg=((page%pages)+pages)%pages;plot=P[pg]||[]}}
 
@@ -417,10 +423,11 @@ function MapView({D,layers,cases,onOpen,paused,pick,onPick,mark,fly,children}){
       ${mark&&(()=>{const X=v.tx+mark.x*v.s,Y=v.ty-mark.y*v.s;return html`<g class="mark">${mark.r>0&&html`<circle class="unc" cx=${X} cy=${Y} r=${mark.r*v.s}/>`}<circle class="pm" cx=${X} cy=${Y} r="6"/></g>`})()}</svg>`}
     ${idle.map(r=>cardEl(r,'idle'+(r.cd.out?' out':''),r.cd.d,itemName(cases[r.id].items[r.item]),r.item))}
     ${plot.map((r,k)=>cardEl({...r,key:'p'+r.key},'',.25+k*.07,itemName(cases[r.id].items[r.item]),r.item))}
-    ${pin&&pages>1&&html`<div class="pager" style=${{left:MOBILE?Math.min(base.bw-80,Math.max(80,FR.left+FR.width/2)):FR.left+FR.width/2,top:FR.top+FR.height+12}} onPointerDown=${e=>e.stopPropagation()} onPointerUp=${e=>e.stopPropagation()}>
+    ${MOBILE&&pin&&html`<button class="mback" aria-label="Volver al mapa" onPointerDown=${e=>e.stopPropagation()} onPointerUp=${e=>e.stopPropagation()} onClick=${()=>setPin(null)}>‹ Volver</button>`}
+    ${pin&&pages>1&&html`<div class="pager" style=${MOBILE?undefined:{left:FR.left+FR.width/2,top:FR.top+FR.height+12}} onPointerDown=${e=>e.stopPropagation()} onPointerUp=${e=>e.stopPropagation()}>
       <button aria-label="Anteriores" onClick=${()=>setPage(p=>p-1)}>‹</button><span>${pg+1} / ${pages}</span><button aria-label="Siguientes" onClick=${()=>setPage(p=>p+1)}>›</button></div>`}
-    ${v&&!pick&&!pin&&html`<${Hint} id="map" cls="low">Pellizca para acercar · toca un cuadro para verlo<//>`}
-    ${v&&pin&&pages>1&&html`<${Hint} id="pin" cls="low">Desliza para ver más · toca el cuadro para abrirlo<//>`}
+    ${v&&!pick&&!pin&&html`<${Hint} id="map" cls="low">Toca un cuadro<//>`}
+    ${v&&pin&&pages>1&&html`<${Hint} id="pin" cls="low">Desliza para ver más<//>`}
     <div class="tools" onPointerDown=${e=>e.stopPropagation()}>
       <button aria-label="Acercar" onClick=${()=>{const b=box.current.getBoundingClientRect();zoomAt(b.width/2,b.height/2,1.6)}}>+</button>
       <button aria-label="Alejar" onClick=${()=>{const b=box.current.getBoundingClientRect();zoomAt(b.width/2,b.height/2,1/1.6)}}>−</button>
@@ -488,7 +495,7 @@ function LensMap({D,cases,tile,sel,aside}){
       ${c0&&(()=>{const [X,Y]=S(c0.x,c0.y);return html`${c0.r>0&&html`<circle class="unc" cx=${X} cy=${Y} r=${c0.r/vw.mpp}/>`}<circle class="cs" cx=${X} cy=${Y} r="4.5"/>`})()}
       ${!MOBILE&&html`<circle class="lring" cx=${lx} cy=${ly} r=${lr}/>`}</svg>
     ${MOBILE?html`<div class="seamv" style=${{left:sx}} aria-hidden="true"><i>‹ ›</i></div>
-        <${Hint} id="seam" cls="foot">Arrastra la barra: 1956 a la izquierda, hoy a la derecha<//>
+        <${Hint} id="seam" cls="foot">Arrastra la barra<//>
         <span class="stg" style=${{left:8,opacity:seam>.12?1:0}}>1956–57</span><span class="stg" style=${{right:8,opacity:seam<.88?1:0}}>hoy</span>`
       :html`<span class="ltag" style=${{left:lx,top:ly-lr}}>ortofoto 1956–57</span>`}
     ${c0&&(()=>{const [X,Y]=S(c0.x,c0.y);return html`<span class="cname" style=${{left:X+10,top:Y}}>${c0.title}</span>`})()}
@@ -523,13 +530,14 @@ function Viewer({c,it,eq,dir,onClose,onStep}){
       else if(MOBILE&&Math.hypot(dx,dy)<10&&(e.target===e.currentTarget||e.target.classList.contains('vgrid')))onClose()}};
   const vr=useRef(),[room,setRoom]=useState(null);
   useEffect(()=>{if(!MOBILE)return;const ro=new ResizeObserver(([e])=>setRoom({w:e.contentRect.width,h:e.contentRect.height}));ro.observe(vr.current);return()=>ro.disconnect()},[]);
-  const head=html`<figcaption>${catNo(c)} · ${c.title}<button class="x" aria-label="Cerrar" onClick=${onClose}>×</button></figcaption>`;
+  const top=html`<div class="vhead">${catNo(c)} · ${c.title}<button class="x" aria-label="Cerrar" onClick=${onClose}>×</button></div>`;
+  const head=MOBILE?null:html`<figcaption>${catNo(c)} · ${c.title}<button class="x" aria-label="Cerrar" onClick=${onClose}>×</button></figcaption>`;
   let body;
   if(it.type==='versions'){const n=it.photos.length;   // each version in its own card, sized to the free space: 2 across, as many rows as needed
-    const fv=MOBILE&&room&&fitVersions(it.photos,room.w-20,room.h-20-44),ist=i=>fv?{maxWidth:fv.fit[i].W+'px',maxHeight:fv.fit[i].H+'px'}:undefined;
+    const fv=MOBILE&&room&&fitVersions(it.photos,room.w-8,room.h-8),ist=i=>fv?{maxWidth:fv.fit[i].W+'px',maxHeight:fv.fit[i].H+'px'}:undefined;
     return html`<div ref=${vr} class="viewer multi" ...${swipe} style=${{'--cols':Math.min(2,n),'--rows':Math.ceil(n/2),'--dir':dir||0}}>
-      <${Hint} id="viewer" cls="low">Desliza para el siguiente · toca fuera para cerrar<//>
-      <div class="vhead">${catNo(c)} · ${c.title}<button class="x" aria-label="Cerrar" onClick=${onClose}>×</button></div>
+      <${Hint} id="viewer" cls="low">Desliza para ver más<//>
+      ${top}
       <div class="vgrid" key=${it.photos[0].src}>${it.photos.map((p,i)=>html`<figure class="float ver" key=${p.src} style=${fv?{width:fv.cw+12+'px'}:undefined}><div class="pic"><${Pic} src=${p.src} eq=${eq} style=${ist(i)} alt=${c.title+', '+p.label}/>${yearTag(p)}</div>
         <figcaption>${photoCap(p)}</figcaption></figure>`)}</div></div>`}
   else if(it.type==='photo')body=html`${head}<div class="pic"><${Pic} src=${it.src} eq=${eq} alt=${c.title+(it.label?', '+it.label:'')}/>${yearTag(it)}</div><div class="cap"><p>${photoCap(it)}</p></div>`;
@@ -537,7 +545,7 @@ function Viewer({c,it,eq,dir,onClose,onStep}){
   else if(it.type==='audio')body=html`${head}<div class="aud"><${Sound} src=${it.src} label=${it.label} variant="big"/><p>${it.label}</p></div>`;
   else body=html`${head}<div class="doc">${['txt','pdf','html','md'].includes(ext(it.src))&&html`<iframe src=${it.src} title=${it.label||'Documento'}></iframe>`}
     <a href=${it.src} target="_blank" rel="noopener">Abrir ${it.label||it.src.split('/').pop()} ↗</a></div>`;
-  return html`<div ref=${vr} class="viewer" ...${swipe} style=${{'--dir':dir||0}}><${Hint} id="viewer" cls="low">Desliza para el siguiente · toca fuera para cerrar<//><figure class="float" key=${firstSrc(it)||it.src||it.body}>${body}</figure></div>`}
+  return html`<div ref=${vr} class="viewer" ...${swipe} style=${{'--dir':dir||0}}><${Hint} id="viewer" cls="low">Desliza para ver más<//>${MOBILE&&top}<figure class="float" key=${firstSrc(it)||it.src||it.body}>${body}</figure></div>`}
 
 function Explore({D,cases,open,eq,onClose}){
   const [info,setInfo]=useState(false),{tile}=open,[sel,setSel]=useState({id:open.id,item:open.item}),[dir,setDir]=useState(0),[shown,setShown]=useState(false),[closing,setClosing]=useState(false),root=useRef();
@@ -560,17 +568,18 @@ function Explore({D,cases,open,eq,onClose}){
       style=${{'--from':`inset(${f.top}px ${b.width-f.left-f.width}px ${b.height-f.top-f.height}px ${f.left}px)`}}>
     <div class="stage">
       <${LensMap} D=${D} cases=${cases} tile=${tile} sel=${sel.id} aside=${!!it}/>
+      ${MOBILE&&!it&&html`<button class="eback" aria-label="Volver al mapa" onClick=${close}>‹ Mapa</button>`}
       ${it&&html`<${Viewer} c=${c} it=${it} eq=${eq} dir=${dir} onStep=${step} onClose=${()=>setSel(s=>({...s,item:null}))}/>`}
     </div>
     <aside class="files">
-      <header><h2>${squareName(D,tile)}</h2><button class="close" aria-label="Cerrar" onClick=${close}>×</button></header>
+      <header><h2>${squareName(D,tile)}</h2>${!MOBILE&&html`<button class="close" aria-label="Cerrar" onClick=${close}>×</button>`}</header>
       ${cs.map(c=>html`<section key=${c.id} class=${c.id===sel.id?'cur':''}>
         <button class="ch" onClick=${()=>setSel({id:c.id,item:null})}><span class="no">${catNo(c)}</span><b>${c.title}</b></button>
         <small class="meta">${where(c)}${mapLink(c)&&html` <a href=${mapLink(c)} target="_blank" rel="noopener" title="Ver en Google Maps">↗</a>`}</small>
         ${c.items.map((x,i)=>html`<button key=${i} class=${'row'+(c.id===sel.id&&i===sel.item?' sel':'')} onClick=${()=>{setDir(0);setSel({id:c.id,item:i})}}>${thumb(x)}<span>${itemName(x)}</span></button>`)}
       </section>`)}
       <div class="info"><button class="i" aria-expanded=${info} aria-label="Información" onClick=${()=>setInfo(o=>!o)}>i</button>
-        ${info&&html`<p>${TOUCH?'Arrastra para moverte y pellizca para acercar; arrastra la lente para moverla; desliza un archivo a los lados para pasar al siguiente.':'Arrastra y usa la rueda para moverte; ↑ ↓ cambian de archivo; Esc vuelve.'}<br/>Lente: vuelo de 1956–57. Fondo: PNOA, hoy. © IGN (CC BY 4.0)</p>`}</div>
+        ${info&&html`<p>${TOUCH?'Arrastra la barra para comparar 1956 y hoy.':'Arrastra y usa la rueda para moverte; ↑ ↓ cambian de archivo; Esc vuelve.'}<br/>Lente: vuelo de 1956–57. Fondo: PNOA, hoy. © IGN (CC BY 4.0)</p>`}</div>
     </aside></div>`}
 
 /* ---------- proposing a case ----------
@@ -713,7 +722,7 @@ function Propose({D,at,setAt,setR,onFly,onClose}){
 
 function App(){
   const [D,setD]=useState(null),[err,setErr]=useState(null),[layers,setLayers]=useState(()=>({buildings:true,trees:true,water:true,green:true,bw:localStorage.getItem('lnu-bw')==='1'}));
-  const [cases,setCases]=useState({}),[open,setOpen]=useState(null),[info,setInfo]=useState(false),[,setAsp]=useState(0);
+  const [cases,setCases]=useState({}),[open,setOpen]=useState(null),[info,setInfo]=useState(false),[lg,setLg]=useState(!MOBILE),[,setAsp]=useState(0);
   const [proposing,setProposing]=useState(false),[at,setAt]=useState(null),[atR,setAtR]=useState(0),[fly,setFly]=useState(null);
   useEffect(()=>preloadAspects(cases,()=>setAsp(x=>x+1)),[cases]); // photo shapes decide card shapes
   useEffect(()=>{Promise.all([loadData(),fetch('data/cases.json').then(r=>r.ok?r.json():{cases:[]}).catch(()=>({cases:[]}))]).then(([d,cj])=>{
@@ -723,11 +732,13 @@ function App(){
   if(!D)return html`<div class="load">Cargando el mapa…</div>`;
   const tog=k=>setLayers(l=>{const n={...l,[k]:!l[k]};if(k==='bw')localStorage.setItem('lnu-bw',n.bw?'1':'0');return n});
   const LAYERS=[['trees','Árboles','var(--tree)'],['buildings','Edificios','var(--b2)'],['green','Parques','var(--green)'],['water','Agua','var(--water)']];
-  const legend=html`<div class="legend" onPointerDown=${e=>e.stopPropagation()} onPointerUp=${e=>e.stopPropagation()}>
-    <div class="row">${LAYERS.map(([k,l,sw])=>html`<button key=${k} class="ly" aria-pressed=${layers[k]} title=${(layers[k]?'Ocultar ':'Mostrar ')+l.toLowerCase()} onClick=${()=>tog(k)}><i style=${{'--sw':sw}}></i>${l}</button>`)}
+  // phones: the legend folds into one small button, out of the way
+  const fold=MOBILE&&html`<button class="lgbtn" aria-expanded=${lg} onClick=${()=>{setLg(o=>!o);setInfo(false)}}>${lg?'× Capas':'Capas'}</button>`;
+  const legend=html`<div class=${'legend'+(MOBILE&&!lg?' folded':'')} onPointerDown=${e=>e.stopPropagation()} onPointerUp=${e=>e.stopPropagation()}>
+    ${MOBILE&&!lg?fold:html`<div class="row">${fold}${LAYERS.map(([k,l,sw])=>html`<button key=${k} class="ly" aria-pressed=${layers[k]} title=${(layers[k]?'Ocultar ':'Mostrar ')+l.toLowerCase()} onClick=${()=>tog(k)}><i style=${{'--sw':sw}}></i>${l}</button>`)}
       <button class="ly bwt" aria-pressed=${layers.bw} title="Fotos y ortofotos en blanco y negro" onClick=${()=>tog('bw')}><i></i>Fotos en b/n</button>
       <button class="i" aria-expanded=${info} aria-label="Información y fuentes" onClick=${()=>setInfo(o=>!o)}>i</button></div>
-    ${info&&html`<p>${TOUCH?'Toca un cuadro para fijarlo (1956 y hoy: arrastra dentro para comparar); otro toque lo abre. Pellizca o toca dos veces para acercar.':'Pasa por un cuadro: 1956 y hoy. Clic: fijarlo; otro clic: abrirlo.'}<br/>Datos: Ayto. de Madrid · Catastro · © OpenStreetMap · © IGN (CC BY 4.0)</p>`}</div>`;
+    ${info&&html`<p>${TOUCH?'Toca un cuadro para verlo; otro toque lo abre.':'Pasa por un cuadro: 1956 y hoy. Clic: fijarlo; otro clic: abrirlo.'}<br/>Datos: Ayto. de Madrid · Catastro · © OpenStreetMap · © IGN (CC BY 4.0)</p>`}`}</div>`;
   return html`<div class=${"app"+(layers.bw?" bw":"")}>
     <${MapView} D=${D} layers=${layers} cases=${cases} onOpen=${setOpen} paused=${!!open||proposing} pick=${proposing}
       onPick=${([x,y])=>setAt({x,y})} mark=${proposing&&at&&{...at,r:atR}} fly=${fly}>${legend}<//>

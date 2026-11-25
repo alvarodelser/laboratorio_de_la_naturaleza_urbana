@@ -5,11 +5,14 @@
    COLOUR and TYPE: white ground, buildings a breath of grey, trees #4e7d52, ink #1f1f1f for marks; one typewriter face for everything (Courier Prime): an archive's typed cards and index labels.
    LAYOUT: full-screen map; one small collapsible legend bottom-left, zoom bottom-right; explorer = stage + file list on the right. */
 :root{color-scheme:light dark;--font:"Courier Prime","Courier New",Courier,monospace;
- --bg:light-dark(#ffffff,#11131a);--ink:light-dark(#14213d,#e6e9f2);--mute:light-dark(#8a8a94,#8f93a0);
- --grid:light-dark(#e7e7eb,#22252e);--gridk:light-dark(#c8c8d0,#3a3e4a);--frame:light-dark(#c9c9c5,#454843);
- --b0:light-dark(#f7ecea,#221a1a);--b1:light-dark(#f4e5e2,#271d1c);--b2:light-dark(#f0ddd9,#2c201f);
- --tree:light-dark(#8fb39a,#5f8f70);--water:light-dark(#9fb6dc,#3a557f);--green:light-dark(#eaf1ea,#19231b);
- --line:light-dark(#e4e4e1,#2c2e2b);--card:light-dark(#ffffff,#1a1b1a);--ease:cubic-bezier(.2,.7,.2,1)}
+ --bg:#ffffff;--ink:#14213d;--mute:#8a8a94;
+ --grid:#e7e7eb;--gridk:#c8c8d0;--frame:#c9c9c5;
+ --b0:#f7ecea;--b1:#f4e5e2;--b2:#f0ddd9;
+ --tree:#8fb39a;--water:#9fb6dc;--green:#eaf1ea;
+ --line:#e4e4e1;--card:#ffffff;--ease:cubic-bezier(.2,.7,.2,1)}
+/* dark values as a separate block, not light-dark(): iOS before 17.5 doesn't know light-dark(), every colour went invalid and the canvas map painted black */
+:root[data-theme=dark]{--bg:#11131a;--ink:#e6e9f2;--mute:#8f93a0;--grid:#22252e;--gridk:#3a3e4a;--frame:#454843;--b0:#221a1a;--b1:#271d1c;--b2:#2c201f;--tree:#5f8f70;--water:#3a557f;--green:#19231b;--line:#2c2e2b;--card:#1a1b1a}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#11131a;--ink:#e6e9f2;--mute:#8f93a0;--grid:#22252e;--gridk:#3a3e4a;--frame:#454843;--b0:#221a1a;--b1:#271d1c;--b2:#2c201f;--tree:#5f8f70;--water:#3a557f;--green:#19231b;--line:#2c2e2b;--card:#1a1b1a}}
 :root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
 *{box-sizing:border-box;min-width:0}
 html,body{height:100%}
@@ -333,4 +336,43 @@ button:hover{border-color:var(--frame)}button:focus-visible,input:focus-visible{
 @media(hover:none){
  .title p{transition:opacity .3s}.map.focus .title p{opacity:0}
  .card:not(.idle) .lab{-webkit-line-clamp:unset;line-clamp:none;display:block;max-height:calc(100% - 8px);overflow:auto}
+}
+
+/* phones, the layout: the title and its introduction alone across the top; at the foot a folded legend (left) and Contribuir (right);
+   no zoom buttons (pinch). A pinned square: the title gives way to a back button, the square rises to the top, its file fills
+   the screen below with the caption under it, the arrows at the foot. Explorer: a back button on the map; an open file takes the
+   whole screen with its title and × in a bar across the top */
+@media(hover:none){
+ .tools{display:none}
+ .title{max-width:none;right:calc(16px + env(safe-area-inset-right));transition:opacity .3s}
+ .map.focus .title{opacity:0}
+ .propbtn{top:auto;bottom:calc(14px + env(safe-area-inset-bottom));min-height:40px;font-size:12px}
+ .app:has(.map.focus) .propbtn,.app:has(.legend:not(.folded)) .propbtn,.map.focus .legend{display:none}
+ .legend{max-width:calc(100% - 28px - env(safe-area-inset-left) - env(safe-area-inset-right))}
+ .legend.folded{padding:0;border:0;background:none}
+ .legend .lgbtn{min-height:40px;font-size:12px;padding:0 12px}
+ .legend .row .lgbtn{min-height:36px;border:0;border-right:1px solid var(--line);margin-right:4px;padding:0 10px 0 6px}
+ .mback{position:absolute;z-index:8;left:calc(12px + env(safe-area-inset-left));top:calc(10px + env(safe-area-inset-top));min-height:40px;font-size:13px;animation:rise .3s ease both}
+ .pager{left:50%;top:auto;bottom:calc(14px + env(safe-area-inset-bottom))}
+ .map .hint.low{--hint-b:66px}
+ /* captions under the photo, never on it: one line on the floating cards, whole on the pinned square's file */
+ .card .lab{top:calc(100% + 4px);bottom:auto;left:0;max-width:100%;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+   -webkit-line-clamp:unset;line-clamp:none;font-size:11px;line-height:1.35;padding:2px 6px;background:var(--card);color:var(--ink)}
+ .card:not(.idle) .lab{right:0;max-width:none;max-height:none;white-space:normal;overflow:visible;padding:3px 6px 4px}
+ .eback{position:absolute;z-index:3;left:calc(10px + env(safe-area-inset-left));top:calc(10px + env(safe-area-inset-top));min-height:40px;font-size:13px;
+   background:rgb(255 255 255/.94);color:#1f1f1f;border:0;box-shadow:0 1px 6px rgb(0 0 0/.25)}
+ .lensmap .stg{top:auto;bottom:8px}
+ .hint.foot{bottom:44px}
+ .viewer{padding:calc(62px + env(safe-area-inset-top)) 10px calc(12px + env(safe-area-inset-bottom))}
+ .viewer .vhead{position:absolute;z-index:2;left:0;right:0;top:0;min-height:0;font-size:12px;color:var(--ink);box-shadow:0 1px 0 var(--line);
+   padding:calc(6px + env(safe-area-inset-top)) calc(6px + env(safe-area-inset-right)) 6px calc(14px + env(safe-area-inset-left))}
+ .viewer .vhead .x{margin-left:auto;min-height:44px;min-width:44px;font-size:24px;border:0;background:none}
+ .viewer .float{padding:8px}
+}
+@media(hover:none) and (max-width:700px){
+ .explore.item{grid-template-rows:100% 0%}
+ .explore.item .files{visibility:hidden}
+ .viewer .pic img{max-height:calc(100dvh - 190px);max-width:calc(100vw - 36px)}
+ .viewer .cap{max-width:calc(100vw - 36px)}
+ .viewer .doc{height:calc(100dvh - 120px)}
 }
