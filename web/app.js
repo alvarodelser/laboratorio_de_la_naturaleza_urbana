@@ -613,7 +613,7 @@ function AudioPick({audio,setAudio,setErr}){
     <span class="nm">${audio.name} · ${mb(audio.blob.size)}</span><button type="button" aria-label="Quitar audio" onClick=${()=>setAudio(null)}>×</button></div>`;
   return html`<div class="audiopick">${CAN_REC&&html`<button type="button" onClick=${start}>● Grabar</button>`}
     <label class="addf wide">Elegir archivo<input type="file" accept="audio/*,.opus,.m4a,.amr" onChange=${e=>{const f=e.target.files[0];e.target.value='';if(f)take(f,f.name)}}/></label></div>`}
-const KINDS=[['foto','Foto','▣','Fotos antiguas, o antes y ahora'],['audio','Audio','♪','Graba o sube un audio'],['texto','Texto','¶','Un recuerdo, una historia']];
+const KINDS=[['foto','Foto','▣'],['audio','Audio','♪'],['texto','Texto','¶']];
 /* place search: OpenStreetMap's Nominatim, limited to the map frame. One request per search (on Enter or the button,
    never while typing), as its usage policy asks; the results credit OpenStreetMap. */
 const shortName=r=>{const a=r.address||{},first=r.name||(r.display_name||'').split(',')[0];
@@ -670,9 +670,9 @@ function Propose({D,at,setAt,setR,onFly,onClose}){
     catch(err){setState({error:err.message||'No se pudo enviar.'})}};
   const head=html`<header><h2>Contribuir al archivo</h2><button type="button" class="close" aria-label="Cerrar" onClick=${onClose}>×</button></header>`;
   if(state&&state.done)return html`<aside class="propose">${head}<p>Gracias. Hemos recibido tu aportación: el equipo la revisará antes de añadirla al mapa.</p><button onClick=${onClose}>Cerrar</button></aside>`;
-  const kinds=html`<div class=${'kinds'+(tipo?'':' big')} role="radiogroup" aria-label="Qué quieres aportar">${KINDS.map(([k,l,g,hint])=>html`<button type="button" key=${k} role="radio" aria-checked=${tipo===k} disabled=${busy}
-      onClick=${()=>{setTipo(k);setState(null)}}><b aria-hidden="true">${g}</b><span>${l}</span>${!tipo&&html`<small>${hint}</small>`}</button>`)}</div>`;
-  if(!tipo)return html`<form class="propose" onPointerDown=${e=>e.stopPropagation()}>${head}<p class="lead">Comparte una foto, un sonido o un texto sobre la naturaleza de Madrid y cómo ha cambiado. Lo revisaremos antes de publicarlo.</p>${kinds}</form>`;
+  const kinds=html`<div class=${'kinds'+(tipo?'':' big')} role="radiogroup" aria-label="Qué quieres aportar">${KINDS.map(([k,l,g])=>html`<button type="button" key=${k} role="radio" aria-checked=${tipo===k} disabled=${busy}
+      onClick=${()=>{setTipo(k);setState(null)}}><b aria-hidden="true">${g}</b><span>${l}</span></button>`)}</div>`;
+  if(!tipo)return html`<form class="propose" onPointerDown=${e=>e.stopPropagation()}>${head}<p class="lead">Envía una foto, un audio o un texto. Revisaremos cada aportación y la añadiremos al mapa.</p>${kinds}</form>`;
   const sec=(n,t)=>html`<h3><span class="no">${n}</span>${t}</h3>`;
   const slot=(i,label)=>html`<div class="slot"><span class="lb">${label}</span>
     ${par[i]?html`<span class="ph"><img src=${par[i]} alt=${label}/><button type="button" aria-label=${'Quitar foto de '+label.toLowerCase()} onClick=${()=>setPar(p=>p.map((x,j)=>j===i?null:x))}>×</button></span>`

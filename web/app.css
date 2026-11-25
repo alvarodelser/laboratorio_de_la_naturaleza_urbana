@@ -230,7 +230,7 @@ button:hover{border-color:var(--frame)}button:focus-visible,input:focus-visible{
 .propose .kinds button b{font:400 15px/1 var(--font)}
 .propose .kinds button[aria-checked=true]{background:var(--ink);color:var(--bg)}
 .propose .kinds.big{flex-direction:column}
-.propose .kinds.big button{min-height:72px;flex-direction:column;align-items:flex-start;justify-content:center;gap:3px;padding:10px 14px;text-align:left}
+.propose .kinds.big button{min-height:56px;flex-direction:column;align-items:flex-start;justify-content:center;gap:3px;padding:10px 14px;text-align:left}
 .propose .kinds.big button+button{border-left:0;border-top:1px solid var(--ink)}
 .propose .kinds.big button b{position:absolute;right:16px;font-size:26px;color:var(--mute)}.propose .kinds.big button{position:relative}
 .propose .kinds.big button span{font-size:15px;font-weight:700}.propose .kinds.big button small{color:var(--mute);font-size:11px}
